@@ -118,7 +118,7 @@
                     android:id="@+id/sn_profile_action_button_3"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_sms_white_48pt" />
+                    android:src="@drawable/user_id_icon" />
 
                 <ImageButton
                     android:layout_width="fill_parent"
