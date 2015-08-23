@@ -32,5 +32,8 @@
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="44c4beed0e60455764e10bc144e0539d95c25437" />
     </application>
 </manifest>

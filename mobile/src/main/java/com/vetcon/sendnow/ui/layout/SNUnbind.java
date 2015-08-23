@@ -1,4 +1,4 @@
-package com.vetcon.sendnow.ui;
+package com.vetcon.sendnow.ui.layout;
 
 import android.view.View;
 import android.view.ViewGroup;

@@ -98,7 +98,7 @@
                 android:layout_marginBottom="16dp" />
 
             <TextView
-                android:id="@+id/sj_reset_text"
+                android:id="@+id/sn_skip_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sj_signup_btn"
@@ -109,7 +109,8 @@
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:text="SKIP LOGIN" />
 
         </LinearLayout>
     </ScrollView>

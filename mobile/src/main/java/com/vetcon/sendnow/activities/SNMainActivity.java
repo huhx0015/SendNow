@@ -5,22 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.google.android.gms.wallet.FullWallet;
-import com.google.android.gms.wallet.MaskedWallet;
-import com.simplify.android.sdk.CardEditor;
 import com.simplify.android.sdk.Simplify;
 import com.vetcon.sendnow.R;
-import com.vetcon.sendnow.ui.SNUnbind;
+import com.vetcon.sendnow.ui.layout.SNUnbind;
 import java.lang.ref.WeakReference;
 import butterknife.ButterKnife;
 
-public class SNMainActivity extends AppCompatActivity implements Simplify.AndroidPayCallback {
+public class SNMainActivity extends AppCompatActivity  {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
+    // LOGGING VARIABLES
     private static final String LOG_TAG = SNMainActivity.class.getSimpleName();
-    private Simplify mSimplify;
-    private CardEditor mCardEditor;
 
     // ACTIVITY VARIABLES
     private static WeakReference<SNMainActivity> weakRefActivity = null; // Used to maintain a weak reference to the activity.
@@ -49,6 +45,7 @@ public class SNMainActivity extends AppCompatActivity implements Simplify.Androi
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.sn_main_activity_menu, menu);
         return true;
@@ -86,30 +83,6 @@ public class SNMainActivity extends AppCompatActivity implements Simplify.Androi
 
         setContentView(R.layout.sn_main_activity_layout);
         ButterKnife.bind(this); // ButterKnife view injection initialization.
-
-    }
-
-
-    /** SIMPLIFY METHODS _______________________________________________________________________ **/
-
-
-    @Override
-    public void onReceivedMaskedWallet(MaskedWallet maskedWallet) {
-
-    }
-
-    @Override
-    public void onReceivedFullWallet(FullWallet fullWallet) {
-
-    }
-
-    @Override
-    public void onAndroidPayCancelled() {
-
-    }
-
-    @Override
-    public void onAndroidPayError(int i) {
 
     }
 
