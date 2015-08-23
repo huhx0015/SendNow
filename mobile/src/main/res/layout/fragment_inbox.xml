@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/sn_blue_gradient"
     tools:context=".MainActivity$DummySectionFragment" >
 
 	<ListView
@@ -11,7 +11,6 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
         android:overScrollMode="never"
-        android:background="#ffffff"
         android:listSelector="@drawable/list_item_selector"
 	    android:layout_alignParentLeft="true"
 	    android:layout_alignParentTop="true" >
