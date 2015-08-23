@@ -42,7 +42,8 @@
         android:hardwareAccelerated="true"
         android:largeHeap="true"
         android:launchMode="singleTop"
-        android:alwaysRetainTaskState="true">
+        android:alwaysRetainTaskState="true"
+        android:name="com.vetcon.sendnow.MainApplicationStartup">
 
         <activity
             android:name=".activities.SNMainActivity"

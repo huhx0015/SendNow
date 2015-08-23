@@ -18,7 +18,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.parse.LogInCallback;
+import com.parse.ParseAnalytics;
+import com.parse.ParseException;
+import com.parse.ParseInstallation;
+import com.parse.ParseUser;
 import com.simplify.android.sdk.Simplify;
+import com.vetcon.sendnow.InboxFragment;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.data.SNTwitterUserModel;
 import com.vetcon.sendnow.fragments.SNCalculateFragment;
@@ -68,6 +76,8 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
         // LAYOUT INITIALIZATION:
         setContentView(R.layout.sn_main_activity_layout);
         ButterKnife.bind(this); // ButterKnife view injection initialization.
+
+        setupParse();
 
         setupLayout(); // Sets up the layout for the activity.
     }
@@ -156,9 +166,22 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     /** LAYOUT METHODS _________________________________________________________________________ **/
 
     private void setupLayout() {
+        setupButtons();
         setupFragment(); // Sets up the fragment view for the activity.
         setUpToolbar(); // Sets up the toolbar for the activity.
     }
+
+    private void setupButtons() {
+
+        actionButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
 
     /** FRAGMENT METHODS _______________________________________________________________________ **/
 
@@ -265,6 +288,10 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
             changeFragment(fragment, fragType, "PROFILE", null, true);
         }
 
+        else if (fragType.equals("DOCUMENTS")) {
+            Fragment fragment = new InboxFragment(); // Initializes the SNCalculateFragment class.
+            changeFragment(fragment, fragType, "PROFILE", null, true);
+        }
         // TODO: Add more functionality here later.
     }
 
@@ -275,4 +302,52 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
         Fragment fragment = new SNProfileFragment(); // Initializes the SNProfileFragment class.
         changeFragment(fragment, "PROFILE", currentFragment, null, true);
     }
+
+    //---
+    private ParseUser mCurrentUser;
+
+    private void setupParse() {
+
+        mCurrentUser = ParseUser.getCurrentUser();
+        if (mCurrentUser == null) {
+            login();
+        }
+        else {
+            //Log.i(TAG, mCurrentUser.getUsername());
+
+            ParseInstallation.getCurrentInstallation().addUnique("channels", "user_" + mCurrentUser.getObjectId());
+            ParseInstallation.getCurrentInstallation().saveInBackground();
+
+            String appName = this.getString(R.string.title_activity_view_image);
+            //actionBar.setTitle(appName);
+
+            ParseAnalytics.trackAppOpened(getIntent());
+        }
+    }
+
+    private void login() {
+        String username = "fytest2";
+        String password = "Power88";
+
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                setProgressBarIndeterminateVisibility(false);
+
+                if (e == null) {
+                    // Success!
+
+                    ParseInstallation.getCurrentInstallation().addUnique("channels", "user_" + user.getObjectId());
+                    ParseInstallation.getCurrentInstallation().saveInBackground();
+
+                    //inboxFragment.updateMessagesList();
+                }
+                else {
+
+                    Toast.makeText(SNMainActivity.this, R.string.login_error_title, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
 }

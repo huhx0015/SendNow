@@ -131,8 +131,7 @@ public class SNProfileFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                //TODO: Define action here.
-                SNToast.toastyPopUp("MESSAGE", currentActivity);
+                displayFragment("DOCUMENTS");
             }
         });
     }
