@@ -11,14 +11,11 @@
 
 
 	<!-- image upload -->
-    <string name="action_settings">Settings</string>
     <string name="title_section1">Identification Documents</string>
     <string name="title_section2">Requests</string>
     <string name="title_section3">Friends</string>
     <string name="title_section4">News</string>
     <string name="title_activity_login">Login</string>
-    <string name="username_hint">Username</string>
-    <string name="password_hint">Password</string>
     <string name="email_hint">Email</string>
     <string name="email_password_hint">Email Address</string>
     <string name="login_text">Login</string>
