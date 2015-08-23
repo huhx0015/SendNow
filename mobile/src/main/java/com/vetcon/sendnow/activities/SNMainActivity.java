@@ -32,8 +32,10 @@ import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.data.SNTwitterUserModel;
 import com.vetcon.sendnow.fragments.SNCalculateFragment;
 import com.vetcon.sendnow.fragments.SNMapFragment;
+import com.vetcon.sendnow.fragments.SNPayFragment;
 import com.vetcon.sendnow.fragments.SNProfileFragment;
 import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
+import com.vetcon.sendnow.ui.actionbar.SNToolbar;
 import com.vetcon.sendnow.ui.fragments.SNFragmentView;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
 import java.lang.ref.WeakReference;
@@ -165,6 +167,8 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
         // returned to the SNProfileFragment.
         if ( !(currentFragment.equals("PROFILE")) ) {
             removeFragment();
+            SNToolbar.updateToolbar(sn_main_toolbar, "Send Now");
+            actionButton.setVisibility(View.INVISIBLE); // Hides the floating action button.
         }
 
         else {
@@ -267,12 +271,9 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     /** FRAGMENT METHODS _______________________________________________________________________ **/
 
     // changeFragment(): Changes the fragment views.
-    private void changeFragment(Fragment frag, String fragToAdd, String fragToRemove, String subtitle,
-                                Boolean isAnimated) {
+    private void changeFragment(Fragment frag, String fragToAdd, Boolean isAnimated) {
 
         Log.d(LOG_TAG, "changeFragment(): Fragment changed.");
-
-        //SNFragmentView.removeFragment(fragmentContainer, fragToRemove, false, weakRefActivity);
 
         // Adds the fragment to the primary fragment container.
         SNFragmentView.addFragment(frag, fragmentContainer, R.id.sn_fragment_container, fragToAdd, isAnimated, weakRefActivity);
@@ -355,23 +356,40 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
         // SNMapsFragment:
         if (fragType.equals("MAPS")) {
             Fragment fragment = new SNMapFragment(); // Initializes the SNMapFragment class.
-            changeFragment(fragment, fragType, "PROFILE", null, true);
+            changeFragment(fragment, fragType, true);
+            SNToolbar.updateToolbar(sn_main_toolbar, "Location");
+            actionButton.setVisibility(View.INVISIBLE); // Hides the floating action button.
         }
 
         // SNCalculateFragment:
         else if (fragType.equals("CALCULATE")) {
             Fragment fragment = new SNCalculateFragment(); // Initializes the SNCalculateFragment class.
-            changeFragment(fragment, fragType, "PROFILE", null, true);
+            changeFragment(fragment, fragType, true);
+            SNToolbar.updateToolbar(sn_main_toolbar, "Funding");
+            actionButton.setVisibility(View.INVISIBLE); // Hides the floating action button.
         }
 
+        // InboxFragment:
         else if (fragType.equals("DOCUMENTS")) {
             Fragment fragment = new InboxFragment();
-            changeFragment(fragment, fragType, "PROFILE", null, true);
+            changeFragment(fragment, fragType, true);
+            SNToolbar.updateToolbar(sn_main_toolbar, "Documents");
+            actionButton.setVisibility(View.VISIBLE); // Displays the floating action button.
+        }
+
+        // SNPayFragment:
+        else if (fragType.equals("PAY")) {
+            Fragment fragment = new SNPayFragment();
+            changeFragment(fragment, fragType, true);
+            SNToolbar.updateToolbar(sn_main_toolbar, "Payment");
+            actionButton.setVisibility(View.INVISIBLE); // Hides the floating action button.
         }
 
         else {
             Fragment fragment = new SNProfileFragment();
-            changeFragment(fragment, fragType, currentFragment, null, true);
+            changeFragment(fragment, fragType, true);
+            SNToolbar.updateToolbar(sn_main_toolbar, "Send Now");
+            actionButton.setVisibility(View.INVISIBLE); // Hides the floating action button.
         }
 
         // TODO: Add more functionality here later.
@@ -382,7 +400,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
         // TODO: Add functionality to remove the fragment from view and return focus to the PROFILE fragment.
         Fragment fragment = new SNProfileFragment(); // Initializes the SNProfileFragment class.
-        changeFragment(fragment, "PROFILE", currentFragment, null, true);
+        changeFragment(fragment, "PROFILE", true);
     }
 
     //---

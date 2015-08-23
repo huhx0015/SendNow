@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.vetcon.sendnow.R;
+import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
 import com.vetcon.sendnow.ui.toast.SNToast;
 
 import butterknife.Bind;
@@ -104,8 +105,7 @@ public class SNCalculateFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                // TODO: Define action to perform for requesting here.
-                SNToast.toastyPopUp("REQUEST!", currentActivity);
+                // displayFragment("REQUEST");
             }
         });
 
@@ -114,8 +114,7 @@ public class SNCalculateFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                // TODO: Define action to perform for sending here.
-                SNToast.toastyPopUp("SEND!", currentActivity);
+                displayFragment("PAY");
             }
         });
 
@@ -239,5 +238,13 @@ public class SNCalculateFragment extends Fragment {
 
         // Sets the initial text for the valueText TextView object.
         valueText.setText("$");
+    }
+
+    /** INTERFACE METHODS ______________________________________________________________________ **/
+
+    // displayFragment(): Displays the specified fragment.
+    private void displayFragment(String fragType) {
+        try { ((OnFragmentUpdateListener) currentActivity).displayFragment(fragType); }
+        catch (ClassCastException cce) {} // Catch for class cast exception errors.
     }
 }

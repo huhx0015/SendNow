@@ -10,6 +10,8 @@ import com.google.android.gms.wallet.FullWallet;
 import com.google.android.gms.wallet.MaskedWallet;
 import com.simplify.android.sdk.Simplify;
 import com.vetcon.sendnow.R;
+import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
+
 import butterknife.ButterKnife;
 
 /**
@@ -46,6 +48,22 @@ public class SNPayFragment extends DialogFragment implements Simplify.AndroidPay
         setUpLayout(); // Sets up the layout for the fragment.
 
         return pay_view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // register Android Pay callback
+        Simplify.addAndroidPayCallback(this);
+    }
+
+    @Override
+    public void onStop() {
+
+        // remove Android Pay callback
+        Simplify.removeAndroidPayCallback(this);
+        super.onStop();
     }
 
     // onDestroyView(): This function runs when the screen is no longer visible and the view is
