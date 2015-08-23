@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -61,6 +62,14 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     // VIEW INJECTION VARIABLES
     @Bind(R.id.sn_fragment_container) FrameLayout fragmentContainer;
     @Bind(R.id.sn_action_button) FloatingActionButton actionButton;
+    @Bind(R.id.sn_drawer_row_1) LinearLayout drawerHomeButton;
+    @Bind(R.id.sn_drawer_row_2) LinearLayout drawerWalletButton;
+    @Bind(R.id.sn_drawer_row_3) LinearLayout drawerDocumentsButton;
+    @Bind(R.id.sn_drawer_row_4) LinearLayout drawerFilesButton;
+    @Bind(R.id.sn_drawer_row_5) LinearLayout drawerSearchButton;
+    @Bind(R.id.sn_drawer_row_6) LinearLayout drawerNotificationsButton;
+    @Bind(R.id.sn_drawer_row_7) LinearLayout drawerPendingButton;
+    @Bind(R.id.sn_drawer_row_8) LinearLayout drawerAccountButton;
     @Bind(R.id.sn_toolbar) Toolbar sn_main_toolbar;
 
     /** ACTIVITY METHODS _______________________________________________________________________ **/
@@ -166,13 +175,86 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     /** LAYOUT METHODS _________________________________________________________________________ **/
 
     private void setupLayout() {
-        setupButtons();
+        setupButtons(); // Sets up the button listeners for the activity.
         setupFragment(); // Sets up the fragment view for the activity.
         setUpToolbar(); // Sets up the toolbar for the activity.
     }
 
     private void setupButtons() {
 
+        // DRAWER HOME BUTTON:
+        drawerHomeButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // DRAWER WALLET BUTTON:
+        drawerWalletButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // DRAWER DOCUMENTS BUTTON:
+        drawerDocumentsButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // DRAWER FILES BUTTON:
+        drawerFilesButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // DRAWER SEARCH BUTTON:
+        drawerSearchButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // DRAWER NOTIFICATIONS BUTTON:
+        drawerNotificationsButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // DRAWER PENDING BUTTON:
+        drawerPendingButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // DRAWER ACCOUNT BUTTON:
+        drawerAccountButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // FLOATING ACTION BUTTON:
         actionButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -181,7 +263,6 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
             }
         });
     }
-
 
     /** FRAGMENT METHODS _______________________________________________________________________ **/
 
