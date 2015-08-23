@@ -4,8 +4,8 @@
         <shape>
             <stroke
                 android:width="6dp"
-                android:color="#004d40" />
-            <solid android:color="#004d40"/>
+                android:color="#e1f5fe" />
+            <solid android:color="#e1f5fe"/>
             <corners android:radius="8dp" />
             <padding
                 android:left="6dp"
@@ -19,8 +19,8 @@
 
             <stroke
                 android:width="6dp"
-                android:color="#00695c" />
-            <solid android:color="#00695c"/>
+                android:color="#0277bd" />
+            <solid android:color="#0277bd"/>
             <corners android:radius="8dp" />
             <padding
                 android:left="6dp"

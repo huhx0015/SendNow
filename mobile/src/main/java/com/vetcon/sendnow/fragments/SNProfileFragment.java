@@ -86,6 +86,7 @@ public class SNProfileFragment extends Fragment {
         setUpImages(); // Sets up the ImageView objects for the fragment.
     }
 
+    // setUpButtons():
     private void setUpButtons() {
 
         // CASH BUTTON:
@@ -119,6 +120,7 @@ public class SNProfileFragment extends Fragment {
         });
     }
 
+    // setUpImages():
     private void setUpImages() {
 
 

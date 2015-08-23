@@ -43,7 +43,7 @@ public class SNLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setupDigits();
+        setupDigits(); // Sets up the Twitter Digits authentication.
 
         setupLayout();
         setupButtons();
@@ -99,10 +99,8 @@ public class SNLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Creates an intent to the SNMainActivity.
-                Intent intent = new Intent(SNLoginActivity.this, SNMainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                Intent i = new Intent("com.vetcon.sendnow.MAINACTIVITY");
+                startActivityForResult(i, 0); // Launches the activity class.
             }
         });
     }
@@ -118,7 +116,6 @@ public class SNLoginActivity extends AppCompatActivity {
         // Sets up the Twitter Digits configuration.
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new TwitterCore(authConfig), new Digits());
-
     }
 
     /** RECYCLE METHODS ________________________________________________________________________ **/
@@ -128,7 +125,7 @@ public class SNLoginActivity extends AppCompatActivity {
     private void recycleMemory() {
 
         // Unbinds all Drawable objects attached to the current layout.
-        try { SNUnbind.unbindDrawables(findViewById(R.id.sn_main_activity_layout)); }
+        try { SNUnbind.unbindDrawables(findViewById(R.id.sn_login_activity_layout)); }
         catch (NullPointerException e) { e.printStackTrace(); } // Prints error message.
     }
 }

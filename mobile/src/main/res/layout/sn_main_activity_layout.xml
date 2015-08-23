@@ -8,6 +8,13 @@
     android:clickable="false"
     android:orientation="vertical">
 
+    <android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/sn_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
     <!-- Main Content View -->
     <LinearLayout
         android:id="@+id/sn_main_content_frame"
@@ -27,7 +34,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/sn_main_subcontent_frame"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/sn_blue_gradient">
 
             <FrameLayout
                 android:layout_width="fill_parent"
@@ -72,5 +80,141 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <!-- Navigation Drawer -->
+    <com.vetcon.sendnow.ui.layout.ScrimInsetsFrameLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sn_main_left_drawer"
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#ffffff"
+        android:elevation="10dp"
+        android:fitsSystemWindows="true"
+        app:insetForeground="#4000">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/sn_main_left_drawer_container">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/sn_main_left_drawer_subcontainer">
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="192dp"
+                    android:id="@+id/sn_drawer_background_image"
+                    android:scaleType="centerCrop" />
+
+                <!-- Your drawer content -->
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="5dp"
+                    android:background="@drawable/sn_toolbar_drop_shadow"
+                    android:id="@+id/sn_drawer_drop_shadow" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:id="@+id/sn_drawer_container_1"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="3dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sn_drawer_row_icon_1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TEXT 1"
+                        android:id="@+id/sn_drawer_text_1"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="4dp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sn_drawer_spacer_1"
+                    android:paddingTop="1dp"
+                    android:background="@android:color/background_dark" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:id="@+id/sn_drawer_container_2_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:id="@+id/sn_drawer_container_2"
+                        android:layout_gravity="center"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/sn_drawer_row_icon_2" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TEXT 2"
+                            android:id="@+id/sn_drawer_text_2"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="2dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/sn_drawer_history_parent_container">
+
+                        <ScrollView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/sn_drawer_history_scrollview_container" >
+
+                            <ListView android:id="@+id/sn_main_left_drawer_list"
+                                android:layout_width="240dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="start"
+                                android:padding="10dp"
+                                android:choiceMode="singleChoice"
+                                android:divider="@android:color/transparent"
+                                android:dividerHeight="0dp"
+                                android:background="#00000000"/>
+                        </ScrollView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.vetcon.sendnow.ui.layout.ScrimInsetsFrameLayout>
+
+</android.support.v4.widget.DrawerLayout>
 
 </android.support.design.widget.CoordinatorLayout>
