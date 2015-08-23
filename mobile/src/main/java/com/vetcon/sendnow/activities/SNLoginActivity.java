@@ -1,6 +1,7 @@
 package com.vetcon.sendnow.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.digits.sdk.android.DigitsAuthButton;
 import com.vetcon.sendnow.MainApplicationStartup;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.interfaces.OnTwitterDigitListener;
+import com.vetcon.sendnow.preferences.SNPreferences;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
 import com.vetcon.sendnow.ui.toast.SNToast;
 import butterknife.Bind;
@@ -22,8 +24,15 @@ import butterknife.ButterKnife;
  */
 public class SNLoginActivity extends AppCompatActivity implements OnTwitterDigitListener {
 
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
     // ACTIVITY VARIABLES
     private Boolean isFinished = false; // Used to determine if this activity can be finished or not.
+
+    // PREFERENCE VARIABLES
+    private Boolean isDigitRegistered = false; // Used to determine if the user has been registered via Twitter Digits.
+    private SharedPreferences SN_prefs; // Main SharedPreferences objects that store settings for the application.
+    private static final String SN_OPTIONS = "sn_options"; // Used to reference the name of the preference XML file.
 
     // VIEW INJECTION VARIABLES
     @Bind(R.id.sn_username_field) EditText usernameField;
@@ -43,8 +52,12 @@ public class SNLoginActivity extends AppCompatActivity implements OnTwitterDigit
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setupLayout();
-        setupButtons();
+        // LAYOUT INITIALIZATION:
+        setContentView(R.layout.sn_login_activity_layout);
+        ButterKnife.bind(this); // ButterKnife view injection initialization.
+
+        setupButtons(); // Sets up the button listeners for the activity.
+        loadPreferences(); // Loads SharedPreference values.
     }
 
     // onPause(): This method runs when the activity is suspended.
@@ -64,11 +77,6 @@ public class SNLoginActivity extends AppCompatActivity implements OnTwitterDigit
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
-
-    private void setupLayout() {
-        setContentView(R.layout.sn_login_activity_layout);
-        ButterKnife.bind(this); // ButterKnife view injection initialization.
-    }
 
     private void setupButtons() {
 
@@ -92,7 +100,7 @@ public class SNLoginActivity extends AppCompatActivity implements OnTwitterDigit
 
             @Override
             public void onClick(View v) {
-                // TODO: Get username and password from EditText fields and connect to Parse.
+                SNToast.toastyPopUp("Wrong user name or password. Please verify and try again.", SNLoginActivity.this);
             }
         });
 
@@ -101,7 +109,7 @@ public class SNLoginActivity extends AppCompatActivity implements OnTwitterDigit
 
             @Override
             public void onClick(View v) {
-                SNToast.toastyPopUp("SIGNUP BUTTON disabled.", SNLoginActivity.this);
+                SNToast.toastyPopUp("Signup has been disabled for this demonstration.", SNLoginActivity.this);
             }
         });
 
@@ -122,6 +130,22 @@ public class SNLoginActivity extends AppCompatActivity implements OnTwitterDigit
         // Creates an intent to the SNMainActivity.
         Intent i = new Intent("com.vetcon.sendnow.MAINACTIVITY");
         startActivityForResult(i, 0); // Launches the activity class.
+    }
+
+    /** PREFERENCES FUNCTIONALITY ______________________________________________________________ **/
+
+    // loadPreferences(): Loads the SharedPreference values from the stored SharedPreferences object.
+    private void loadPreferences() {
+
+        // Initializes the SharedPreferences object.
+        SN_prefs = SNPreferences.initializePreferences(SN_OPTIONS, this);
+        isDigitRegistered = SNPreferences.getDigitRegistration(SN_prefs);
+
+        // If the user has already registered for Twitter Digits / Parse, the user is logged in
+        // automatically.
+        if (isDigitRegistered) {
+            launchIntent();
+        }
     }
 
     /** RECYCLE METHODS ________________________________________________________________________ **/
@@ -148,7 +172,7 @@ public class SNLoginActivity extends AppCompatActivity implements OnTwitterDigit
 
         // Displays an error message.
         else {
-            SNToast.toastyPopUp("Registeration failure. Please try again.", this);
+            SNToast.toastyPopUp("Registration failure. Please try again.", this);
         }
     }
 }

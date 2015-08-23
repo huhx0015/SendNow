@@ -1,0 +1,10 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="SETTINGS"
+        android:key="sn_options">
+        <CheckBoxPreference
+            android:key="sn_digits_registration"
+            android:title="DIGITS_REGISTRATION"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

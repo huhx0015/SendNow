@@ -1,8 +1,7 @@
 package com.vetcon.sendnow;
 
-import android.app.Activity;
 import android.app.Application;
-import android.os.AsyncTask;
+import android.content.SharedPreferences;
 import android.util.Log;
 import com.digits.sdk.android.AuthCallback;
 import com.digits.sdk.android.Digits;
@@ -21,16 +20,11 @@ import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.vetcon.sendnow.activities.SNLoginActivity;
 import com.vetcon.sendnow.activities.SNMainActivity;
-import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
 import com.vetcon.sendnow.interfaces.OnTwitterDigitListener;
+import com.vetcon.sendnow.preferences.SNPreferences;
 import com.vetcon.sendnow.ui.toast.SNToast;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import javax.net.ssl.HttpsURLConnection;
 import io.fabric.sdk.android.Fabric;
 
 public class MainApplicationStartup extends Application {
@@ -43,6 +37,11 @@ public class MainApplicationStartup extends Application {
 	// LOGGING VARIABLES
 	private static final String LOG_TAG = MainApplicationStartup.class.getSimpleName();
 
+	// PREFERENCE VARIABLES
+	private Boolean isDigitRegistered = false; // Used to determine if the user has been registered via Twitter Digits.
+	private SharedPreferences SN_prefs; // Main SharedPreferences objects that store settings for the application.
+	private static final String SN_OPTIONS = "sn_options"; // Used to reference the name of the preference XML file.
+
 	// TWITTER DIGITS VARIABLES:
 	private AuthCallback authCallback;
 	private String TWITTER_KEY = "NO-KEY-FOR-YOU";
@@ -54,11 +53,13 @@ public class MainApplicationStartup extends Application {
 	public void onCreate() { 
 		super.onCreate();
 
+		// SHARED PREFERENCES INITIALIZATION:
+		loadPreferences();
+
 		// PARSE INITIALIZATION:
 	    Parse.initialize(this,
 				"nTodQv8Ace13WVn1vIyNMin7dfjV7QZV8Wqj28D8",
 				"n5I412Cd2A7MS2K4CdVeXhJSQBlHsTjXlhhdm7dg");
-
 	    PushService.setDefaultPushCallback(this, SNMainActivity.class);
 
 		// TWITTER DIGITS INITIALIZATION:
@@ -138,15 +139,26 @@ public class MainApplicationStartup extends Application {
 
 				if (user != null) {
 					Log.d(LOG_TAG, "registerParseUser(): SUCCESS!");
-					processLogin(true);
+					SNPreferences.setDigitRegistration(true, SN_prefs); // Saves registration status in SharedPreferences.
+					processLogin(true); // Launches an intent to SNMainActivity from SNLoginActivity.
+
 				}
 
 				else {
 					Log.d(LOG_TAG, "registerParseUser(): FAILURE!");
-					processLogin(false);
+					processLogin(false); // Displays a error Toast message from SNLoginActivity.
 				}
 			}
 		});
+	}
+
+	/** PREFERENCES FUNCTIONALITY ______________________________________________________________ **/
+
+	// loadPreferences(): Loads the SharedPreference values from the stored SharedPreferences object.
+	private void loadPreferences() {
+
+		// Initializes the SharedPreferences object.
+		SN_prefs = SNPreferences.initializePreferences(SN_OPTIONS, this);
 	}
 
 	/** INTERFACE METHODS ______________________________________________________________________ **/
