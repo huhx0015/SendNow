@@ -171,9 +171,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
             actionButton.setVisibility(View.INVISIBLE); // Hides the floating action button.
         }
 
-        else {
-            finish();  // Finishes the activity.
-        }
+        else { finish(); }  // Finishes the activity.
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
