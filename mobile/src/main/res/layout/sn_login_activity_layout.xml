@@ -28,8 +28,8 @@
             android:id="@+id/sn_login_container">
 
             <ImageView
-                android:layout_width="192dp"
-                android:layout_height="192dp"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
                 android:id="@+id/sn_login_logo"
                 android:layout_gravity="center"
                 android:src="@drawable/sn_logo" />
@@ -68,6 +68,13 @@
                 android:background="@drawable/sn_edit_text_background"
                 android:textColorHint="@android:color/darker_gray" />
 
+            <com.digits.sdk.android.DigitsAuthButton
+                android:id="@+id/sn_digits_button"
+                android:layout_width="256dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="54dp" />
+
             <Button
                 android:id="@+id/sn_login_button"
                 android:layout_width="256dp"
@@ -80,7 +87,7 @@
                 android:background="@drawable/sn_rounded_light_blue_button"
                 android:layout_gravity="center"
                 android:typeface="sans"
-                android:layout_marginTop="54dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp" />
 
             <Button

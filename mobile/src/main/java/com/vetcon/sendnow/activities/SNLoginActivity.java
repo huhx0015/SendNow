@@ -8,8 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.digits.sdk.android.Digits;
+import com.digits.sdk.android.DigitsAuthButton;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
+import com.vetcon.sendnow.MainApplicationStartup;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
 import com.vetcon.sendnow.ui.toast.SNToast;
@@ -21,9 +23,6 @@ import io.fabric.sdk.android.Fabric;
  * Created by Michael Yoon Huh on 8/22/2015.
  */
 public class SNLoginActivity extends AppCompatActivity {
-
-    private String TWITTER_KEY = "NO-KEY-FOR-YOU";
-    private String TWITTER_SECRET = "ITS-A-SECRET";
 
     // ACTIVITY VARIABLES
     private Boolean isFinished = false; // Used to determine if this activity can be finished or not.
@@ -42,8 +41,6 @@ public class SNLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setupDigits(); // Sets up the Twitter Digits authentication.
 
         setupLayout();
         setupButtons();
@@ -73,6 +70,10 @@ public class SNLoginActivity extends AppCompatActivity {
     }
 
     private void setupButtons() {
+
+        // TWITTER DIGITS AUTH BUTTON:
+        DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.sn_digits_button);
+        digitsButton.setCallback(((MainApplicationStartup) getApplication()).getAuthCallback());
 
         // LOGIN BUTTON:
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -105,19 +106,6 @@ public class SNLoginActivity extends AppCompatActivity {
                 startActivityForResult(i, 0); // Launches the activity class.
             }
         });
-    }
-
-    /** TWITTER DIGITS METHODS _________________________________________________________________ **/
-
-    private void setupDigits() {
-
-        // Retrieves the TWITTER KEY and TWITTER SECRET from the secret XML.
-        TWITTER_KEY = getString(R.string.twitter_key);
-        TWITTER_SECRET = getString(R.string.twitter_secret);
-
-        // Sets up the Twitter Digits configuration.
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new TwitterCore(authConfig), new Digits());
     }
 
     /** RECYCLE METHODS ________________________________________________________________________ **/
