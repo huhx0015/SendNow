@@ -167,7 +167,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
         // returned to the SNProfileFragment.
         if ( !(currentFragment.equals("PROFILE")) ) {
             removeFragment();
-            SNToolbar.updateToolbar(sn_main_toolbar, "Send Now");
+            SNToolbar.updateToolbar(sn_main_toolbar, getString(R.string.app_name));
             actionButton.setVisibility(View.INVISIBLE); // Hides the floating action button.
         }
 
@@ -386,7 +386,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
         else {
             Fragment fragment = new SNProfileFragment();
             changeFragment(fragment, fragType, true);
-            SNToolbar.updateToolbar(sn_main_toolbar, "Send Now");
+            SNToolbar.updateToolbar(sn_main_toolbar, getString(R.string.app_name));
             actionButton.setVisibility(View.INVISIBLE); // Hides the floating action button.
         }
 
