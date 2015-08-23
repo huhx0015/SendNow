@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/sn_map_fragment_layout">
+    android:id="@+id/sn_map_fragment_layout"
+    android:background="@drawable/sn_blue_gradient">
 
     <Button
         android:layout_width="192dp"
@@ -29,7 +30,8 @@
         android:layout_gravity="bottom|center"
         android:orientation="horizontal"
         android:id="@+id/sn_map_fragment_bottom_container"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@drawable/sn_dark_transparent_background">
 
         <ImageButton
             android:layout_width="fill_parent"

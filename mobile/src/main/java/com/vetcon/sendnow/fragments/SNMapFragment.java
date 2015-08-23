@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -15,6 +18,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.vetcon.sendnow.R;
+import com.vetcon.sendnow.intent.SNIntent;
+
+import java.util.Random;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -36,6 +44,13 @@ public class SNMapFragment extends Fragment {
     double centerLongitude = 36.283822; // Sets the y-coordinates for Syria.
     private GoogleMap googleMap;
     private MapView mapView;
+
+    // VIEW INJECTION VARIABLES
+    @Bind(R.id.sn_map_first_banner_button_1) ImageButton dwbBanner;
+    @Bind(R.id.sn_map_first_banner_button_2) ImageButton iaBanner;
+    @Bind(R.id.sn_map_first_banner_button_3) ImageButton icrcBanner;
+    @Bind(R.id.sn_map_first_banner_button_4) ImageButton ircBanner;
+    @Bind(R.id.sn_donate_buttton) Button donateButton;
 
     /** FRAGMENT LIFECYCLE METHODS _____________________________________________________________ **/
 
@@ -85,7 +100,94 @@ public class SNMapFragment extends Fragment {
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
 
-    private void setUpButtons() {}
+    private void setUpButtons() {
+
+        // DONATE BUTTON: I'M FEELING LUCKY CHARITY BUTTON
+        donateButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                String url; // Used to store the randomized charity site.
+                int NUM_SITES; // Number of sites available to use from for the charity page.
+                int randInt; // A random integer value within the range of NUM_SITES.
+                Random randValue = new Random(); // A random generated value.
+
+                NUM_SITES = 5; // Number of sites available to load.
+                randInt = randValue.nextInt(NUM_SITES); // A random integer value within the range of NUM_SITES.
+
+                // Switch case in which a background image is chosen from based on the randInt value.
+                switch (randInt) {
+
+                    case 0:
+                        url = "http://www.accion.org/";
+                        break;
+
+                    case 1:
+                        url = "http://www.mercycorps.org/";
+                        break;
+
+                    case 2:
+                        url = "https://donate.doctorswithoutborders.org/";
+                        break;
+
+                    case 3:
+                        url = "http://www.interaction.org/";
+                        break;
+
+                    case 4:
+                        url = "https://engage.rescue.org";
+                        break;
+
+                    case 5:
+                        url = "https://www.icrc.org/";
+                        break;
+
+                    default:
+                        url = "http://www.redcross.org/";
+                        break;
+                }
+
+                SNIntent.launchWebIntent(url, currentActivity);
+            }
+        });
+
+        // DOCTORS WITHOUT BORDERS:
+        dwbBanner.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                SNIntent.launchWebIntent("https://donate.doctorswithoutborders.org/", currentActivity);
+            }
+        });
+
+        // INTERACTION:
+        iaBanner.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                SNIntent.launchWebIntent("http://www.interaction.org/", currentActivity);
+            }
+        });
+
+        // INTERNATIONAL RESCUE COMMITTEE:
+        icrcBanner.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                SNIntent.launchWebIntent("https://engage.rescue.org", currentActivity);
+            }
+        });
+
+         // INTERNATIONAL RED CROSS:
+        ircBanner.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                SNIntent.launchWebIntent("https://www.icrc.org/", currentActivity);
+            }
+        });
+    }
 
     /** GOOGLE MAP METHODS _____________________________________________________________________ **/
 
