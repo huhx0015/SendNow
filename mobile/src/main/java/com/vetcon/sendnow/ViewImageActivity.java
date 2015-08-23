@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.vetcon.sendnow.ui.actionbar.SNToolbar;
 
 public class ViewImageActivity extends Activity {
 
@@ -32,104 +33,85 @@ public class ViewImageActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 		setContentView(R.layout.activity_view_image);
-		
+
 		Uri imageUri = getIntent().getData();
 		messageTime = getIntent().getExtras().getString("messageTime");
-		imageView = (ImageView)findViewById(R.id.imageView);
-		clockBg = (ImageView)findViewById(R.id.clockBg);
-		countDownText = (TextView)findViewById(R.id.counterTextView);
-		
+		imageView = (ImageView) findViewById(R.id.imageView);
+		clockBg = (ImageView) findViewById(R.id.clockBg);
+		countDownText = (TextView) findViewById(R.id.counterTextView);
+
 		Picasso.with(getApplicationContext()).load(imageUri)
 
-        	.into(imageView, new Callback() {
+				.into(imageView, new Callback() {
 
-                    @Override
-                    public void onSuccess() {
-                    	
-                    	imageView.setVisibility(View.VISIBLE);
-                    	
-                    	closeBtn = (ImageView) findViewById(R.id.closeBtn);
-                       	closeBtn.setImageResource(R.drawable.closebtn);
-                        closeBtn.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onSuccess() {
 
-            	            @Override
-            	            public void onClick(View v) {
-            	                
-            	            	finish();
-            	              }
-            			});
-            			
-                    	if (messageTime.equals("0"))
-                        {
-                        	clockBg.setImageDrawable(null);
-                        	
-                        	countDownTimer = new CountDownTimer(30000, 100) {
-                       	     public void onTick(long ms) {
-                       	         if (Math.round((float)ms / 1000.0f) != secondsLeft)
-                       	         {  
-                       	             secondsLeft = Math.round((float)ms / 1000.0f);
-                       	         }
-                       	         
-                       	         // Log.i("test","ms="+ms+" till finished="+secondsLeft);
-                       	     }
-                       	     
-                       	     public void onFinish() {
-                       	    	 
-                       	    	 finish();
-                       	     }
-	                       }.start();
-	                    }
-                        else
-                        {
-                        	clockBg.setImageResource(R.drawable.clockbg);
-                        	
-                        	int secondsToDestruct = Integer.valueOf(messageTime.toString()); 
-                        	
-                            countDownTimer = new CountDownTimer(secondsToDestruct, 100) {
-                           	 public void onTick(long ms) {
-                           		 if (Math.round((float)ms / 1000.0f) != secondsLeft)
-                           		 {  
-                           			 secondsLeft = Math.round((float)ms / 1000.0f);
-                           			 countDownText.setText("" + secondsLeft);
-                           		 }
-                      	         
-                           		 // Log.i("test","ms="+ms+" till finished="+secondsLeft);
-                           	 }
-                      	     
-                           	 public void onFinish() {
-                           		 
-                           		countDownText.setText("0");
-                              	    	 
-                               	finish(); 
-                           	 }
-                           }.start();
-                        }
-                    }
-                    @Override
-                    public void onError() {
-                   
-                    	imageView.setVisibility(View.INVISIBLE);
-                    }
-            	});
-    }
-	
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(event.getAction() == KeyEvent.ACTION_DOWN){
-            switch(keyCode)
-            {
-            case KeyEvent.KEYCODE_BACK:
-                
-            	//Log.d(TAG, "Device back button pressed.");
-            
-            	return true;
-            }
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+						imageView.setVisibility(View.VISIBLE);
+
+						closeBtn = (ImageView) findViewById(R.id.closeBtn);
+						closeBtn.setImageResource(R.drawable.closebtn);
+						closeBtn.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+
+								finish();
+							}
+						});
+
+						if (messageTime.equals("0")) {
+							clockBg.setImageDrawable(null);
+
+							countDownTimer = new CountDownTimer(30000, 100) {
+								public void onTick(long ms) {
+									if (Math.round((float) ms / 1000.0f) != secondsLeft) {
+										secondsLeft = Math.round((float) ms / 1000.0f);
+									}
+
+									// Log.i("test","ms="+ms+" till finished="+secondsLeft);
+								}
+
+								public void onFinish() {
+
+									finish();
+								}
+							}.start();
+						} else {
+							clockBg.setImageResource(R.drawable.clockbg);
+
+							int secondsToDestruct = Integer.valueOf(messageTime.toString());
+
+							countDownTimer = new CountDownTimer(secondsToDestruct, 100) {
+								public void onTick(long ms) {
+									if (Math.round((float) ms / 1000.0f) != secondsLeft) {
+										secondsLeft = Math.round((float) ms / 1000.0f);
+										countDownText.setText("" + secondsLeft);
+									}
+
+									// Log.i("test","ms="+ms+" till finished="+secondsLeft);
+								}
+
+								public void onFinish() {
+
+									countDownText.setText("0");
+
+									finish();
+								}
+							}.start();
+						}
+					}
+
+					@Override
+					public void onError() {
+
+						imageView.setVisibility(View.INVISIBLE);
+					}
+				});
+	}
 }
