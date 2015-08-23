@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.digits.sdk.android.DigitsAuthButton;
 import com.vetcon.sendnow.MainApplicationStartup;
 import com.vetcon.sendnow.R;
+import com.vetcon.sendnow.interfaces.OnTwitterDigitListener;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
 import com.vetcon.sendnow.ui.toast.SNToast;
 import butterknife.Bind;
@@ -19,7 +20,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Michael Yoon Huh on 8/22/2015.
  */
-public class SNLoginActivity extends AppCompatActivity {
+public class SNLoginActivity extends AppCompatActivity implements OnTwitterDigitListener {
 
     // ACTIVITY VARIABLES
     private Boolean isFinished = false; // Used to determine if this activity can be finished or not.
@@ -73,7 +74,7 @@ public class SNLoginActivity extends AppCompatActivity {
 
         // TWITTER DIGITS AUTH BUTTON:
         DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.sn_digits_button);
-        digitsButton.setCallback(((MainApplicationStartup) getApplication()).getAuthCallback());
+        digitsButton.setCallback(((MainApplicationStartup) getApplication()).getAuthCallback(this));
         digitsButton.setAuthTheme(android.R.style.Theme_Material);
 
         // LOGIN BUTTON: Handles the display of the login field container.
@@ -109,14 +110,18 @@ public class SNLoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
-                isFinished = true; // Indicates that this activity is ready to be finished.
-
-                // Creates an intent to the SNMainActivity.
-                Intent i = new Intent("com.vetcon.sendnow.MAINACTIVITY");
-                startActivityForResult(i, 0); // Launches the activity class.
+                launchIntent();
             }
         });
+    }
+
+    private void launchIntent() {
+
+        isFinished = true; // Indicates that this activity is ready to be finished.
+
+        // Creates an intent to the SNMainActivity.
+        Intent i = new Intent("com.vetcon.sendnow.MAINACTIVITY");
+        startActivityForResult(i, 0); // Launches the activity class.
     }
 
     /** RECYCLE METHODS ________________________________________________________________________ **/
@@ -128,5 +133,22 @@ public class SNLoginActivity extends AppCompatActivity {
         // Unbinds all Drawable objects attached to the current layout.
         try { SNUnbind.unbindDrawables(findViewById(R.id.sn_login_activity_layout)); }
         catch (NullPointerException e) { e.printStackTrace(); } // Prints error message.
+    }
+
+    /** INTERFACE METHODS ______________________________________________________________________ **/
+
+    @Override
+    public void processLogin(Boolean isSuccess) {
+
+        // If Twitter Digits & Parse registration was successful, an intent to the SNMainActivity
+        // class is launched.
+        if (isSuccess) {
+            launchIntent();
+        }
+
+        // Displays an error message.
+        else {
+            SNToast.toastyPopUp("Registeration failure. Please try again.", this);
+        }
     }
 }

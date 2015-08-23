@@ -1,5 +1,6 @@
 package com.vetcon.sendnow;
 
+import android.app.Activity;
 import android.app.Application;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -8,17 +9,26 @@ import com.digits.sdk.android.Digits;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsOAuthSigning;
 import com.digits.sdk.android.DigitsSession;
+import com.parse.FunctionCallback;
+import com.parse.LogInCallback;
 import com.parse.Parse;
+import com.parse.ParseCloud;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 import com.parse.PushService;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterCore;
+import com.vetcon.sendnow.activities.SNLoginActivity;
 import com.vetcon.sendnow.activities.SNMainActivity;
+import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
+import com.vetcon.sendnow.interfaces.OnTwitterDigitListener;
 import com.vetcon.sendnow.ui.toast.SNToast;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 import io.fabric.sdk.android.Fabric;
@@ -27,15 +37,16 @@ public class MainApplicationStartup extends Application {
 
 	/** CLASS VARIABLES ________________________________________________________________________ **/
 
+	// ACTIVITY VARIABLES
+	private SNLoginActivity loginActivity; // Referernces the login activity.
+
 	// LOGGING VARIABLES
 	private static final String LOG_TAG = MainApplicationStartup.class.getSimpleName();
 
 	// TWITTER DIGITS VARIABLES:
 	private AuthCallback authCallback;
-	private DigitsSession currentSession;
 	private String TWITTER_KEY = "NO-KEY-FOR-YOU";
 	private String TWITTER_SECRET = "ITS-A-SECRET";
-	private TwitterAuthConfig authConfig;
 
 	/** APPLICATION METHODS ____________________________________________________________________ **/
 
@@ -44,15 +55,19 @@ public class MainApplicationStartup extends Application {
 		super.onCreate();
 
 		// PARSE INITIALIZATION:
-	    Parse.initialize(this, "nTodQv8Ace13WVn1vIyNMin7dfjV7QZV8Wqj28D8",
+	    Parse.initialize(this,
+				"nTodQv8Ace13WVn1vIyNMin7dfjV7QZV8Wqj28D8",
 				"n5I412Cd2A7MS2K4CdVeXhJSQBlHsTjXlhhdm7dg");
+
 	    PushService.setDefaultPushCallback(this, SNMainActivity.class);
 
 		// TWITTER DIGITS INITIALIZATION:
 		setupDigits();
 	}
 
-	public AuthCallback getAuthCallback(){
+	public AuthCallback getAuthCallback(SNLoginActivity activity){
+
+		this.loginActivity = activity;
 		return authCallback;
 	}
 
@@ -65,7 +80,7 @@ public class MainApplicationStartup extends Application {
 		TWITTER_SECRET = getString(R.string.twitter_secret);
 
 		// Sets up the Twitter Digits configuration.
-		authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+		final TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
 		Fabric.with(this, new TwitterCore(authConfig), new Digits());
 
 		// Handles the callback from the Twitter Digits button.
@@ -75,109 +90,71 @@ public class MainApplicationStartup extends Application {
 			public void success(DigitsSession session, String phoneNumber) {
 
 				Log.d(LOG_TAG, "setupDigits(): Twitter Digits session successful. Phone number is: " + phoneNumber);
-
 				SNToast.toastyPopUp("Authentication Successful for " + phoneNumber, getApplicationContext());
 
-				if (session.getAuthToken() instanceof TwitterAuthToken) {
-					final TwitterAuthToken authToken = (TwitterAuthToken) session.getAuthToken();
+				// Retrieves the authorization token for the DigitsSession.
+				TwitterAuthToken authToken = (TwitterAuthToken) session.getAuthToken();
+				DigitsOAuthSigning oauthSigning = new DigitsOAuthSigning(authConfig, authToken);
 
-					Log.d(LOG_TAG, "setupDigits(): AuthToken.token: " + authToken.token);
-					Log.d(LOG_TAG, "setupDigits(): AuthToken.secret" + authToken.secret);
-				}
+				// Generates authorization headers for a user session.
+				Map<String, Object> authHeaders = new HashMap<String, Object>();
+				authHeaders.put("token", session.getAuthToken().toString());
+				authHeaders.put("userId", "" + session.getId());
 
-				currentSession = session;
+				Log.d(LOG_TAG, "setupDigits(): Token: " + session.getAuthToken().toString());
+				Log.d(LOG_TAG, "setupDigits(): UserID: " + "" + session.getId());
 
-				// TWITTER DIGITS ASYNCTASK INITIALIZATION:
-				//SNDigitsConnectionTask task = new SNDigitsConnectionTask();
-				//task.execute(""); // Executes the AsyncTask.
+				ParseCloud.callFunctionInBackground("digitsLogin", authHeaders, new FunctionCallback<String>() {
+
+					@Override
+					public void done(String sessionToken, ParseException e) {
+						Log.d(LOG_TAG, "sessionToken: " + sessionToken);
+						Log.d(LOG_TAG, "Exception: " + e);
+						Log.d(LOG_TAG, "setupDigits(): DONE!");
+
+						if (sessionToken != null) {
+							registerParseUser(sessionToken); // Registers the user onto Parse.
+						}
+					}
+				});
 			}
 
 			@Override
 			public void failure(DigitsException exception) {
-
 				SNToast.toastyPopUp("ERROR: " + exception, getApplicationContext());
 			}
 		};
 	}
 
-	/** SUBCLASSES _____________________________________________________________________________ **/
+	/** PARSE METHODS __________________________________________________________________________ **/
 
-	/**
-	 * --------------------------------------------------------------------------------------------
-	 * [SNDigitsConnectionTask] CLASS
-	 * DESCRIPTION: This is an AsyncTask-based class that attempts to send the Twitter Digits
-	 * authentication to the specified web-backend server.
-	 * --------------------------------------------------------------------------------------------
-	 */
+	private void registerParseUser(String sessionToken) {
 
-	public class SNDigitsConnectionTask extends AsyncTask<String, Void, Void> {
+		ParseUser.becomeInBackground(sessionToken, new LogInCallback() {
 
-		/** ASYNCTASK METHODS __________________________________________________________________ **/
+			public void done(ParseUser user, ParseException e) {
 
-		// onPreExecute(): This method runs on the UI thread just before the doInBackground method
-		// executes.
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-		}
+				Log.d(LOG_TAG, "registerParseUser(): User: " + user + " | Exception: " + e);
 
-		// doInBackground(): This method constantly runs in the background while AsyncTask is
-		// running.
-		@Override
-		protected Void doInBackground(final String... params) {
+				if (user != null) {
+					Log.d(LOG_TAG, "registerParseUser(): SUCCESS!");
+					processLogin(true);
+				}
 
-			// Retrieves the authorization token for the DigitsSession.
-			TwitterAuthToken authToken = (TwitterAuthToken) currentSession.getAuthToken();
-			DigitsOAuthSigning oauthSigning = new DigitsOAuthSigning(authConfig, authToken);
-
-			// Generates authorization headers for a user session.
-			Map<String, String> authHeaders = oauthSigning.getOAuthEchoHeadersForVerifyCredentials();
-
-			URL url = null;
-
-			try {
-				url = new URL("http://api.yourbackend.com/verify_credentials.json");
+				else {
+					Log.d(LOG_TAG, "registerParseUser(): FAILURE!");
+					processLogin(false);
+				}
 			}
+		});
+	}
 
-			catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
+	/** INTERFACE METHODS ______________________________________________________________________ **/
 
-			HttpsURLConnection connection = null;
-
-			try {
-				connection = (HttpsURLConnection) url.openConnection();
-			}
-
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			try {
-				connection.setRequestMethod("GET");
-			}
-
-			catch (ProtocolException e) {
-				e.printStackTrace();
-			}
-
-			// Add OAuth Echo headers to request
-			for (Map.Entry<String, String> entry : authHeaders.entrySet()) {
-				connection.setRequestProperty(entry.getKey(), entry.getValue());
-			}
-
-			// Perform request
-			// TODO: Not resolving method.
-			//connection.openConnection();
-
-			return null;
-		}
-
-		// onPostExecute(): This method runs on the UI thread after the doInBackground operation has
-		// completed.
-		@Override
-		protected void onPostExecute(Void aVoid) {
-			super.onPostExecute(aVoid);
-		}
+	// processLogin(): Launches an intent or displays an error message if registration was
+	// successful.
+	private void processLogin(Boolean isSuccess) {
+		try { ((OnTwitterDigitListener) loginActivity).processLogin(isSuccess); }
+		catch (ClassCastException cce) {} // Catch for class cast exception errors.
 	}
 }
