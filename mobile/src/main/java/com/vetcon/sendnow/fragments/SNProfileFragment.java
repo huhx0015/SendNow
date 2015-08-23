@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.data.SNTwitterUserModel;
+import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
 import com.vetcon.sendnow.ui.toast.SNToast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -108,8 +109,9 @@ public class SNProfileFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                //TODO: Define action here.
-                SNToast.toastyPopUp("CASH", currentActivity);
+
+                // Signals the parent activity to display the SNCalculateFragment.
+                displayFragment("CALCULATE");
             }
         });
 
@@ -118,8 +120,9 @@ public class SNProfileFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                //TODO: Define action here.
-                SNToast.toastyPopUp("PLACE", currentActivity);
+
+                // Signals the parent activity to display the SNMapsFragment.
+                displayFragment("MAPS");
             }
         });
 
@@ -156,5 +159,13 @@ public class SNProfileFragment extends Fragment {
         twitterHandle.setText(userProfile.getUserHandle());
         userLocation.setText(userProfile.getUserLocation());
         */
+    }
+
+    /** INTERFACE METHODS ______________________________________________________________________ **/
+
+    // displayFragment(): Displays the specified fragment.
+    private void displayFragment(String fragType) {
+        try { ((OnFragmentUpdateListener) currentActivity).displayFragment(fragType); }
+        catch (ClassCastException cce) {} // Catch for class cast exception errors.
     }
 }

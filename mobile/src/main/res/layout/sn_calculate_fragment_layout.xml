@@ -1,6 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/sn_calculate_fragment_layout"
+    android:background="@drawable/sn_blue_gradient">
 
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:id="@+id/sn_calculate_top_container">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$49.99"
+            android:id="@+id/sn_calculate_value_text"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="56sp"
+            android:typeface="sans"
+            android:textColor="@android:color/white" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/sn_calculate_center_container"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/sn_calculate_center_row_1"
+            android:layout_marginBottom="4dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="1"
+                android:id="@+id/sn_calculate_button_1"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:layout_marginRight="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="2"
+                android:id="@+id/sn_calculate_button_2"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="3"
+                android:id="@+id/sn_calculate_button_3"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:layout_marginLeft="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/sn_calculate_center_row_2"
+            android:layout_marginBottom="4dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="4"
+                android:id="@+id/sn_calculate_button_4"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:layout_marginRight="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="5"
+                android:id="@+id/sn_calculate_button_5"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="6"
+                android:id="@+id/sn_calculate_button_6"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:layout_marginLeft="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/sn_calculate_center_row_3"
+            android:layout_marginBottom="4dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="7"
+                android:id="@+id/sn_calculate_button_7"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:layout_marginRight="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="8"
+                android:id="@+id/sn_calculate_button_8"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="9"
+                android:id="@+id/sn_calculate_button_9"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:layout_marginLeft="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/sn_calculate_center_row_4"
+            android:layout_marginBottom="4dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="."
+                android:id="@+id/sn_calculate_decimal_button"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:layout_marginRight="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="8"
+                android:id="@+id/sn_calculate_button_0"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="DEL"
+                android:id="@+id/sn_calculate_delete_button"
+                android:layout_weight="1"
+                android:background="@drawable/sn_transparent_button"
+                android:layout_marginLeft="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:id="@+id/sn_calculate_bottom_container"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="REQUEST"
+            android:id="@+id/sn_calculate_request_button"
+            android:layout_weight="1"
+            android:background="@drawable/sn_rounded_light_blue_button"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="SEND"
+            android:id="@+id/sn_calculate_send_button"
+            android:layout_weight="1"
+            android:background="@drawable/sn_rounded_dark_blue_button"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp" />
+    </LinearLayout>
 </LinearLayout>

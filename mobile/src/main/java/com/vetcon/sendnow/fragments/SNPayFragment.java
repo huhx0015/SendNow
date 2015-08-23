@@ -58,10 +58,7 @@ public class SNPayFragment extends DialogFragment implements Simplify.AndroidPay
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
 
-    private void setUpLayout() {
-
-
-    }
+    private void setUpLayout() {}
 
     /** SIMPLIFY METHODS _______________________________________________________________________ **/
 

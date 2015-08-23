@@ -22,7 +22,10 @@ import android.widget.ListView;
 import com.simplify.android.sdk.Simplify;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.data.SNTwitterUserModel;
+import com.vetcon.sendnow.fragments.SNCalculateFragment;
+import com.vetcon.sendnow.fragments.SNMapFragment;
 import com.vetcon.sendnow.fragments.SNProfileFragment;
+import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
 import com.vetcon.sendnow.ui.fragments.SNFragmentView;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
 import java.lang.ref.WeakReference;
@@ -30,7 +33,7 @@ import java.lang.ref.WeakReference;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SNMainActivity extends AppCompatActivity  {
+public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdateListener {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
@@ -140,7 +143,16 @@ public class SNMainActivity extends AppCompatActivity  {
     // onBackPressed(): Defines the action to take when the physical back button key is pressed.
     @Override
     public void onBackPressed() {
-        finish();  // Finishes the activity.
+
+        // SNMapFragment: If current fragment view is SNMapsFragment, the focus is returned to the
+        // SNProfileFragment.
+        if (currentFragment.equals("MAPS")) {
+            removeFragment();
+        }
+
+        else {
+            finish();  // Finishes the activity.
+        }
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
@@ -236,5 +248,33 @@ public class SNMainActivity extends AppCompatActivity  {
         // Unbinds all Drawable objects attached to the current layout.
         try { SNUnbind.unbindDrawables(findViewById(R.id.sn_main_activity_layout)); }
         catch (NullPointerException e) { e.printStackTrace(); } // Prints error message.
+    }
+
+    /** INTERFACE METHODS ______________________________________________________________________ **/
+
+    @Override
+    public void displayFragment(String fragType) {
+
+        // SNMapsFragment:
+        if (fragType.equals("MAP")) {
+            Fragment fragment = new SNMapFragment(); // Initializes the SNMapFragment class.
+            changeFragment(fragment, fragType, "PROFILE", null, true);
+        }
+
+        // SNCalculateFragment:
+        else if (fragType.equals("CALCULATE")) {
+            Fragment fragment = new SNCalculateFragment(); // Initializes the SNCalculateFragment class.
+            changeFragment(fragment, fragType, "PROFILE", null, true);
+        }
+
+        // TODO: Add more functionality here later.
+    }
+
+    @Override
+    public void removeFragment() {
+
+        // TODO: Add functionality to remove the fragment from view and return focus to the PROFILE fragment.
+        Fragment fragment = new SNProfileFragment(); // Initializes the SNProfileFragment class.
+        changeFragment(fragment, "PROFILE", currentFragment, null, true);
     }
 }

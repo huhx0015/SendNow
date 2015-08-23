@@ -98,6 +98,8 @@ public class SNLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                isFinished = true; // Indicates that this activity is ready to be finished.
+
                 // Creates an intent to the SNMainActivity.
                 Intent i = new Intent("com.vetcon.sendnow.MAINACTIVITY");
                 startActivityForResult(i, 0); // Launches the activity class.

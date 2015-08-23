@@ -94,7 +94,6 @@ public class SNFragmentView {
         int animationResource; // References the animation XML resource file.
 
         // Sets the animation XML resource file, based on the fragment type.
-        // TRACKS:
         if (fragType.equals("WALLET")) {
 
             // FRAGMENT APPEARANCE ANIMATION:
@@ -108,7 +107,6 @@ public class SNFragmentView {
             }
         }
 
-        // PLAYER:
         else if (fragType.equals("PLACES")) {
 
             // FRAGMENT APPEARANCE ANIMATION:
@@ -122,7 +120,6 @@ public class SNFragmentView {
             }
         }
 
-        // ARTISTS:
         else {
 
             // FRAGMENT APPEARANCE ANIMATION:
