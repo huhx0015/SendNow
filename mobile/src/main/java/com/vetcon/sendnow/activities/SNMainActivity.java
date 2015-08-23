@@ -23,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseAnalytics;
@@ -47,6 +48,7 @@ import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
 import com.vetcon.sendnow.ui.actionbar.SNToolbar;
 import com.vetcon.sendnow.ui.fragments.SNFragmentView;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
+import com.vetcon.sendnow.ui.toast.SNToast;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -219,7 +221,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-                //displayFragment("WALLET");
+                displayFragment("PAY", 0);
             }
         });
 
@@ -228,7 +230,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-                //displayFragment("DOCUMENTS");
+                displayFragment("DOCUMENTS", 0);
             }
         });
 
@@ -237,7 +239,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-                //displayFragment("FILES");
+                displayFragment("DOCUMENTS", 0);
             }
         });
 
@@ -246,6 +248,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
+                SNToast.toastyPopUp("Feature disabled for demo.", SNMainActivity.this);
                 //displayFragment("SEARCH");
             }
         });
@@ -255,6 +258,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
+                SNToast.toastyPopUp("Feature disabled for demo.", SNMainActivity.this);
                 //displayFragment("NOTIFICATIONS");
             }
         });
@@ -264,6 +268,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
+                SNToast.toastyPopUp("Feature disabled for demo.", SNMainActivity.this);
                 //displayFragment("PENDING");
             }
         });
@@ -273,7 +278,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-                //displayFragment("ACCOUNT");
+                displayFragment("PROFILE", 0);
             }
         });
 

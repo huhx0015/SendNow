@@ -121,7 +121,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="John Doe"
+                        android:text="Jennifer Dohl"
                         android:id="@+id/sn_drawer_name_text"
                         android:textColor="@android:color/white"
                         android:textSize="24sp"
@@ -132,7 +132,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Aid Worker"
+                        android:text="Philanthropist"
                         android:id="@+id/sn_drawer_handle_text"
                         android:layout_gravity="center_vertical|right"
                         android:layout_marginRight="16dp"
@@ -146,7 +146,7 @@
                     android:layout_height="192dp"
                     android:id="@+id/sn_drawer_background_image"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/user_drawer_picture" />
+                    android:src="@drawable/sample_profile_image" />
 
                 <!-- Your drawer content -->
                 <View

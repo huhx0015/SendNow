@@ -22,7 +22,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
                 android:id="@+id/sn_profile_image"
-                android:src="@drawable/sample_profile_image"
+                android:src="@drawable/user_drawer_picture"
                 android:scaleType="centerCrop" />
 
             <LinearLayout
@@ -39,7 +39,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jane Doe"
+                    android:text="Charles Dohl"
                     android:id="@+id/sn_profile_name_text"
                     android:layout_gravity="left|bottom"
                     android:textColor="@android:color/white"
@@ -50,7 +50,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Wife"
+                    android:text="Spouse"
                     android:id="@+id/sn_profile_twitter_text"
                     android:typeface="sans"
                     android:textColor="@android:color/white" />
@@ -70,7 +70,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="San Francisco, California"
+                    android:text="Damascus, Syria"
                     android:id="@+id/sn_profile_location_text"
                     android:layout_gravity="bottom|right"
                     android:textColor="@android:color/white"
@@ -126,8 +126,7 @@
                     android:id="@+id/sn_profile_action_button_4"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:src="@android:drawable/ic_menu_myplaces"
-                    android:visibility="gone" />
+                    android:src="@android:drawable/ic_menu_myplaces" />
             </LinearLayout>
 
             <ImageView
@@ -153,7 +152,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Followers"
+                        android:text="Goal"
                         android:id="@+id/sn_profile_stat_header_1"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
@@ -161,10 +160,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="9999"
+                        android:text="$750.00"
                         android:id="@+id/sn_profile_stat_value_1"
-                        android:textColor="@android:color/white"
-                        android:textStyle="italic" />
+                        android:textColor="@android:color/white" />
                 </LinearLayout>
 
                 <ImageView
@@ -184,7 +182,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Following"
+                        android:text="Receieved"
                         android:id="@+id/sn_profile_stat_header_2"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
@@ -192,10 +190,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10"
+                        android:text="$500.00"
                         android:id="@+id/sn_profile_stat_value_2"
-                        android:textColor="@android:color/white"
-                        android:textStyle="italic" />
+                        android:textColor="@android:color/white" />
                 </LinearLayout>
 
                 <ImageView
@@ -215,7 +212,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total Donations"
+                        android:text="Need"
                         android:id="@+id/sn_profile_stat_header_3"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
@@ -223,10 +220,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$9,999 USD"
+                        android:text="$250.00"
                         android:id="@+id/sn_profile_stat_value_3"
-                        android:textColor="@android:color/white"
-                        android:textStyle="italic" />
+                        android:textColor="@android:color/white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -255,7 +251,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="E-Mail"
+                        android:text="Status"
                         android:typeface="sans"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
@@ -269,11 +265,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="jane.doe@mymoneyyourwallet.com"
+                        android:text="In ISIS-held territory, near Damasus, Syria."
                         android:layout_gravity="center_vertical"
                         android:paddingTop="8dp"
                         android:paddingLeft="12dp"
-                        android:id="@+id/sn_profile_details_first_details_text" />
+                        android:id="@+id/sn_profile_details_first_details_text"
+                        android:textColor="#ff110a"
+                        android:typeface="sans"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -304,13 +303,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Website"
+                        android:text="Contact"
                         android:typeface="sans"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:layout_gravity="center_vertical"
-                        android:paddingTop="12dp"
                         android:paddingLeft="12dp"
                         android:paddingRight="8dp"
                         android:id="@+id/sn_profile_details_second_header_text" />
@@ -318,11 +316,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="www.mymoneyyourwallet.com"
+                        android:text="telephone: (1)-669-221-6251"
                         android:layout_gravity="center_vertical"
                         android:paddingTop="8dp"
                         android:paddingLeft="12dp"
-                        android:id="@+id/sn_profile_details_second_details_text" />
+                        android:id="@+id/sn_profile_details_second_details_text_1"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="email: johndohlneedsyourhelp@gmail.com"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="12dp"
+                        android:id="@+id/sn_profile_details_second_details_text_2"
+                        android:textColor="@android:color/white" />
 
                 </LinearLayout>
 
@@ -352,15 +360,18 @@
                     android:textColor="@android:color/white"
                     android:typeface="sans"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp" />
+                    android:layout_marginLeft="20dp"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sn_profile_media_container"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="20dp">
+                    android:id="@+id/sn_profile_twitter_container"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/sn_transparent_button"
+                    android:padding="10dp">
 
                     <ImageButton
                         android:layout_width="wrap_content"
@@ -368,6 +379,17 @@
                         android:id="@+id/sn_profile_twitter_button"
                         android:src="@drawable/tw__ic_logo_default"
                         android:background="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tweet For Charles"
+                        android:id="@+id/sn_profile_tweet_text"
+                        android:layout_gravity="center"
+                        android:textSize="28sp"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:typeface="sans" />
 
                 </LinearLayout>
 

@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.data.SNTwitterUserModel;
+import com.vetcon.sendnow.intent.SNIntent;
 import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
 import com.vetcon.sendnow.ui.toast.SNToast;
 import butterknife.Bind;
@@ -39,11 +41,15 @@ public class SNProfileFragment extends Fragment {
     @Bind(R.id.sn_profile_action_button_1) ImageButton cashButton;
     @Bind(R.id.sn_profile_action_button_2) ImageButton placeButton;
     @Bind(R.id.sn_profile_action_button_3) ImageButton messageButton;
+    @Bind(R.id.sn_profile_action_button_4) ImageButton helpButton;
     @Bind(R.id.sn_profile_twitter_button) ImageButton twitterButton;
     @Bind(R.id.sn_profile_image) ImageView profileImage;
     @Bind(R.id.sn_profile_name_text) TextView profileName;
     @Bind(R.id.sn_profile_twitter_text) TextView twitterHandle;
     @Bind(R.id.sn_profile_location_text) TextView userLocation;
+    @Bind(R.id.sn_profile_twitter_container) LinearLayout twitterContainer;
+    @Bind(R.id.sn_profile_details_second_details_text_1) TextView telephoneText;
+    @Bind(R.id.sn_profile_details_second_details_text_2) TextView emailText;
 
     /** INITIALIZATION FUNCTIONALITY ___________________________________________________________ **/
 
@@ -97,8 +103,6 @@ public class SNProfileFragment extends Fragment {
     // setUpLayout(): Sets up the layout for the fragment.
     private void setUpLayout() {
         setUpButtons(); // Sets up the button listeners for the fragment.
-        setUpImages(); // Sets up the ImageView objects for the fragment.
-        setUpText(); // Sets up the TextView objects for the fragment.
     }
 
     // setUpButtons():
@@ -134,30 +138,42 @@ public class SNProfileFragment extends Fragment {
                 displayFragment("DOCUMENTS");
             }
         });
-    }
 
-    // setUpImages(): Loads the images into the ImageView objects for the fragment
-    private void setUpImages() {
+        // HELP BUTTON:
+        helpButton.setOnClickListener(new View.OnClickListener() {
 
-        //TODO: Once Twitter Digits credentials is finished, uncomment and load the user's image here.
-        /*
-        // USER PROFILE IMAGE:
-        Picasso.with(currentActivity)
-                .load(userProfile.getUserImage())
-                .into(profileImage);
-                */
-    }
+            @Override
+            public void onClick(View v) {
+                SNIntent.launchEmailIntent("johndohlneedsyourhelp@gmail.com", "Help JOHN DOHL!",currentActivity);
+            }
+        });
 
-    // setUpText(): Sets up the TextView objects for the fragment.
-    private void setUpText() {
+        // TWITTER BUTTON:
+        twitterContainer.setOnClickListener(new View.OnClickListener() {
 
-        // TODO: Once Twitter Digits credentials is finished, uncomment and load the user's data here.
-        /*
-        // Sets the logged in user's information into the TextView objects.
-        profileName.setText(userProfile.getUserName());
-        twitterHandle.setText(userProfile.getUserHandle());
-        userLocation.setText(userProfile.getUserLocation());
-        */
+            @Override
+            public void onClick(View v) {
+                SNIntent.launchTwitterIntent(currentActivity); // Launches Intent to Twitter app or website.
+            }
+        });
+
+        // TELEPHONE BUTTON:
+        telephoneText.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                SNIntent.launchDialerIntent("tel:16692216251", currentActivity);
+            }
+        });
+
+        // EMAIL BUTTTON:
+        emailText.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                SNIntent.launchEmailIntent("johndohlneedsyourhelp@gmail.com", "Help JOHN DOHL!",currentActivity);
+            }
+        });
     }
 
     /** INTERFACE METHODS ______________________________________________________________________ **/
