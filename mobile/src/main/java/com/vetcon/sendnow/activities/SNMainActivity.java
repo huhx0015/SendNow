@@ -401,7 +401,8 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
         changeFragment(fragment, "PROFILE", true);
     }
 
-    //---
+    /** PARSE METHODS __________________________________________________________________________ **/
+
     private ParseUser mCurrentUser;
 
     private void setupParse() {

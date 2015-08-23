@@ -20,9 +20,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Map;
-
 import javax.net.ssl.HttpsURLConnection;
-
 import io.fabric.sdk.android.Fabric;
 
 public class MainApplicationStartup extends Application {
@@ -80,14 +78,12 @@ public class MainApplicationStartup extends Application {
 
 				SNToast.toastyPopUp("Authentication Successful for " + phoneNumber, getApplicationContext());
 
-				/*
 				if (session.getAuthToken() instanceof TwitterAuthToken) {
 					final TwitterAuthToken authToken = (TwitterAuthToken) session.getAuthToken();
 
 					Log.d(LOG_TAG, "setupDigits(): AuthToken.token: " + authToken.token);
 					Log.d(LOG_TAG, "setupDigits(): AuthToken.secret" + authToken.secret);
 				}
-				*/
 
 				currentSession = session;
 

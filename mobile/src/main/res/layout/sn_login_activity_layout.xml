@@ -28,8 +28,8 @@
             android:id="@+id/sn_login_container">
 
             <ImageView
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+                android:layout_width="144dp"
+                android:layout_height="144dp"
                 android:id="@+id/sn_login_logo"
                 android:layout_gravity="center"
                 android:src="@drawable/sn_logo" />
