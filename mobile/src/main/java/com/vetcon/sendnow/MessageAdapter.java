@@ -7,6 +7,7 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +65,7 @@ public class MessageAdapter extends ArrayAdapter<ParseObject> {
 
 		if (message.getString(ParseConstants.KEY_FILE_TYPE).equals(ParseConstants.TYPE_IMAGE)) {
 			
-			holder.iconImageView2.setImageResource(R.drawable.ic_action_picture);
+			holder.iconImageView2.setImageResource(R.drawable.user_id_icon);
 		}
 		else {
 			
@@ -76,7 +77,11 @@ public class MessageAdapter extends ArrayAdapter<ParseObject> {
 		String timestamp = new SimpleDateFormat("EEE MMM dd, yyyy, hh:mm a", Locale.US).format(date);
 
 //		holder.nameLabel.setText(message.getString(ParseConstants.KEY_SENDER_NAME));
-		holder.nameLabel.setText("I.D. " + position);
+		String description = message.getString("description");
+		if (TextUtils.isEmpty(description)) {
+			description = "I.D. " + (position + 1);
+		}
+		holder.nameLabel.setText(description);
 
 		holder.nameLabel2.setText(timestamp);
 
