@@ -5,10 +5,18 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.vetcon.sendnow.locationapi.maps.permission.MAPS_RECEIVE" />
 
     <permission
         android:name="com.vetcon.sendnow.locationapi.maps.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -56,8 +64,14 @@
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
 
+        <!-- Enables the Fabric API -->
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="44c4beed0e60455764e10bc144e0539d95c25437" />
+            android:value="@string/fabric_key" />
+
+        <!-- Enables the Google Maps v2 API -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_api_key" />
     </application>
 </manifest>

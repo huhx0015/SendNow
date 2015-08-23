@@ -39,7 +39,7 @@ dependencies {
 
     // INTEGRATED LIBARARIES:
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    wearApp project(':wear')
+    //wearApp project(':wear')
 
     // ANDROID SUPPORT LIBRARIES:
     compile 'com.android.support:design:22.2.1'
