@@ -222,9 +222,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     private void setUpToolbar() {
 
         // Sets the references for the Drawer-related objects.
-        String[] snDrawerSettings = getResources().getStringArray(R.array.drawer_list);
         DrawerLayout snDrawerLayout = (DrawerLayout) findViewById(R.id.sn_drawer_layout);
-        ListView snDrawerList = (ListView) findViewById(R.id.sn_main_left_drawer_list);
 
         // Initializes the Material Design style Toolbar object for the activity.
         if (sn_main_toolbar != null) {
@@ -251,9 +249,6 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
         drawerToggle.setDrawerIndicatorEnabled(true); // Draws the toggle button indicator.
         snDrawerLayout.setDrawerListener(drawerToggle); // Sets the listener for the toggle button.
-
-        // Sets the adapter for the drawer list view.
-        snDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.sn_drawer_list_layout, snDrawerSettings));
 
         // Retrieves the DrawerLayout to set the status bar color. This only takes effect on Lollipop,
         // or when using translucentStatusBar on KitKat.

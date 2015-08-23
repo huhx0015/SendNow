@@ -78,10 +78,6 @@
             android:label="@string/app_name"
             android:logo="@drawable/ic_action"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.vetcon.sendnow.ViewImageActivity"
@@ -98,17 +94,17 @@
         </receiver>
         <receiver android:name="com.vetcon.sendnow.MyCustomReceiver" android:exported="false">
             <intent-filter>
-                <action android:name="com.developer.android.UPDATE_MESSAGES" />
-                <action android:name="com.developer.android.UPDATE_REQUESTS" />
+                <action android:name="com.vetcon.sendnow.UPDATE_MESSAGES" />
+                <action android:name="com.vetcon.sendnow.UPDATE_REQUESTS" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.parse.GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
+            android:permission="com.vetcon.sendnow.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-                <category android:name="com.developer.android" />
+                <category android:name="com.vetcon.sendnow" />
             </intent-filter>
         </receiver>
 
