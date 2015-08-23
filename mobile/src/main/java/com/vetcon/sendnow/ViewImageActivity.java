@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Callback;
@@ -27,6 +28,7 @@ public class ViewImageActivity extends Activity {
 	private ImageView clockBg;
 	private TextView countDownText;
 	private ImageView closeBtn;
+	private ProgressBar progressBar;
 
     protected Uri mOutputUri;
 	
@@ -44,6 +46,7 @@ public class ViewImageActivity extends Activity {
 		imageView = (ImageView) findViewById(R.id.imageView);
 		clockBg = (ImageView) findViewById(R.id.clockBg);
 		countDownText = (TextView) findViewById(R.id.counterTextView);
+		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
 		Picasso.with(getApplicationContext()).load(imageUri)
 
@@ -53,6 +56,7 @@ public class ViewImageActivity extends Activity {
 					public void onSuccess() {
 
 						imageView.setVisibility(View.VISIBLE);
+						progressBar.setVisibility(View.GONE);
 
 						closeBtn = (ImageView) findViewById(R.id.closeBtn);
 						closeBtn.setImageResource(R.drawable.closebtn);
