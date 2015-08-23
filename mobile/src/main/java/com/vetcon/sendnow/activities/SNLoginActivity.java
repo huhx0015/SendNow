@@ -6,18 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.digits.sdk.android.Digits;
 import com.digits.sdk.android.DigitsAuthButton;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterCore;
 import com.vetcon.sendnow.MainApplicationStartup;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
 import com.vetcon.sendnow.ui.toast.SNToast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Michael Yoon Huh on 8/22/2015.
@@ -31,7 +28,10 @@ public class SNLoginActivity extends AppCompatActivity {
     @Bind(R.id.sn_username_field) EditText usernameField;
     @Bind(R.id.sn_password_field) EditText passwordField;
     @Bind(R.id.sn_login_button) Button loginButton;
+    @Bind(R.id.sn_real_login_button) Button realLoginButton;
     @Bind(R.id.sn_signup_btn) Button signUpButton;
+    @Bind(R.id.sn_login_buttons_container) LinearLayout loginButtonContainer;
+    @Bind(R.id.sn_login_field_container) LinearLayout loginFieldContainer;
     @Bind(R.id.sn_skip_text) TextView skipText;
 
     /** ACTIVITY METHODS _______________________________________________________________________ **/
@@ -74,13 +74,24 @@ public class SNLoginActivity extends AppCompatActivity {
         // TWITTER DIGITS AUTH BUTTON:
         DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.sn_digits_button);
         digitsButton.setCallback(((MainApplicationStartup) getApplication()).getAuthCallback());
+        digitsButton.setAuthTheme(android.R.style.Theme_Material);
 
-        // LOGIN BUTTON:
+        // LOGIN BUTTON: Handles the display of the login field container.
         loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                SNToast.toastyPopUp("LOGIN BUTTON disabled.", SNLoginActivity.this);
+                loginButtonContainer.setVisibility(View.GONE); // Hides the login button container.
+                loginFieldContainer.setVisibility(View.VISIBLE); // Displays the login field container.
+            }
+        });
+
+        // REAL LOGIN BUTTON: Processes the username and password fields for login.
+        realLoginButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO: Get username and password from EditText fields and connect to Parse.
             }
         });
 
