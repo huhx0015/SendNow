@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.squareup.picasso.Picasso;
 import com.vetcon.sendnow.R;
+import com.vetcon.sendnow.data.SNTwitterUserModel;
 import com.vetcon.sendnow.ui.toast.SNToast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -23,27 +27,38 @@ public class SNProfileFragment extends Fragment {
     // ACTIVITY VARIABLES
     private Activity currentActivity; // Used to determine the activity class this fragment is currently attached to.
 
+    // PROFILE VARIABLES
+    private SNTwitterUserModel userProfile; // References the Twitter user's profile data model.
+
     // LOGGING VARIABLES
     private static final String LOG_TAG = SNProfileFragment.class.getSimpleName(); // Retrieves the simple name of the class.
 
     // VIEW INJECTION VARIABLES
+    @Bind(R.id.sn_profile_follow_button) Button followButton;
     @Bind(R.id.sn_profile_action_button_1) ImageButton cashButton;
     @Bind(R.id.sn_profile_action_button_2) ImageButton placeButton;
     @Bind(R.id.sn_profile_action_button_3) ImageButton messageButton;
     @Bind(R.id.sn_profile_twitter_button) ImageButton twitterButton;
-    @Bind(R.id.sn_profile_follow_button) Button followButton;
+    @Bind(R.id.sn_profile_image) ImageView profileImage;
+    @Bind(R.id.sn_profile_name_text) TextView profileName;
+    @Bind(R.id.sn_profile_twitter_text) TextView twitterHandle;
+    @Bind(R.id.sn_profile_location_text) TextView userLocation;
 
     /** INITIALIZATION FUNCTIONALITY ___________________________________________________________ **/
 
+    // SNProfileFragment(): Constructor method for this class.
     private final static SNProfileFragment profile_fragment = new SNProfileFragment();
 
+    // SNProfileFragment(): Deconstructor for this class.
     public SNProfileFragment() {}
 
-    // getInstance(): Returns the calculate_fragment instance.
+    // getInstance(): Returns the profile_fragment instance.
     public static SNProfileFragment getInstance() { return profile_fragment; }
 
     // initializeFragment(): Initializes the fragment with the profile properties.
-    public void initializeFragment() {}
+    public void initializeFragment(SNTwitterUserModel user) {
+        this.userProfile = user;
+    }
 
     /** FRAGMENT LIFECYCLE FUNCTIONALITY _______________________________________________________ **/
 
@@ -82,6 +97,7 @@ public class SNProfileFragment extends Fragment {
     private void setUpLayout() {
         setUpButtons(); // Sets up the button listeners for the fragment.
         setUpImages(); // Sets up the ImageView objects for the fragment.
+        setUpText(); // Sets up the TextView objects for the fragment.
     }
 
     // setUpButtons():
@@ -118,6 +134,27 @@ public class SNProfileFragment extends Fragment {
         });
     }
 
-    // setUpImages():
-    private void setUpImages() { }
+    // setUpImages(): Loads the images into the ImageView objects for the fragment
+    private void setUpImages() {
+
+        //TODO: Once Twitter Digits credentials is finished, uncomment and load the user's image here.
+        /*
+        // USER PROFILE IMAGE:
+        Picasso.with(currentActivity)
+                .load(userProfile.getUserImage())
+                .into(profileImage);
+                */
+    }
+
+    // setUpText(): Sets up the TextView objects for the fragment.
+    private void setUpText() {
+
+        // TODO: Once Twitter Digits credentials is finished, uncomment and load the user's data here.
+        /*
+        // Sets the logged in user's information into the TextView objects.
+        profileName.setText(userProfile.getUserName());
+        twitterHandle.setText(userProfile.getUserHandle());
+        userLocation.setText(userProfile.getUserLocation());
+        */
+    }
 }

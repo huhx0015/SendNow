@@ -21,6 +21,7 @@ import android.widget.ListView;
 
 import com.simplify.android.sdk.Simplify;
 import com.vetcon.sendnow.R;
+import com.vetcon.sendnow.data.SNTwitterUserModel;
 import com.vetcon.sendnow.fragments.SNProfileFragment;
 import com.vetcon.sendnow.ui.fragments.SNFragmentView;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
@@ -38,6 +39,9 @@ public class SNMainActivity extends AppCompatActivity  {
 
     // FRAGMENT VARIABLES
     private String currentFragment = ""; // Used to determine which fragment is currently active.
+
+    // PROFILE VARIABLES
+    private SNTwitterUserModel userProfile; // References the Twitter user's profile data model.
 
     // LAYOUT VARIABLES
     private ActionBarDrawerToggle drawerToggle; // References the toolbar drawer toggle button.
@@ -170,7 +174,12 @@ public class SNMainActivity extends AppCompatActivity  {
 
     // setupFragment(): Initializes the fragment view for the layout.
     private void setupFragment() {
-        Fragment fragment = new SNProfileFragment(); // Initializes the SNProfileFragment class.
+
+        SNProfileFragment fragment = new SNProfileFragment(); // Initializes the SNProfileFragment class.
+
+        // TODO: Uncomment this when the Twitter Digits feature is ready.
+        //fragment.initializeFragment(userProfile);
+
         SNFragmentView.addFragment(fragment, fragmentContainer, R.id.sn_fragment_container, "PROFILE", false, weakRefActivity);
     }
 
