@@ -362,11 +362,12 @@
                     android:layout_gravity="center_vertical|right"
                     android:layout_marginRight="20dp">
 
-                    <ImageView
+                    <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/sn_profile_twitter_button"
-                        android:src="@drawable/tw__ic_logo_default" />
+                        android:src="@drawable/tw__ic_logo_default"
+                        android:background="@android:color/transparent" />
 
                 </LinearLayout>
 

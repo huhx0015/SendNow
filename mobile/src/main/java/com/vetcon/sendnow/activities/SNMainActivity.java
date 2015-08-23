@@ -21,6 +21,7 @@ import android.widget.ListView;
 
 import com.simplify.android.sdk.Simplify;
 import com.vetcon.sendnow.R;
+import com.vetcon.sendnow.fragments.SNProfileFragment;
 import com.vetcon.sendnow.ui.fragments.SNFragmentView;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
 import java.lang.ref.WeakReference;
@@ -58,6 +59,11 @@ public class SNMainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
 
         weakRefActivity = new WeakReference<AppCompatActivity>(this); // Creates a weak reference of this activity.
+
+        // LAYOUT INITIALIZATION:
+        setContentView(R.layout.sn_main_activity_layout);
+        ButterKnife.bind(this); // ButterKnife view injection initialization.
+
         setupLayout(); // Sets up the layout for the activity.
     }
 
@@ -136,10 +142,7 @@ public class SNMainActivity extends AppCompatActivity  {
     /** LAYOUT METHODS _________________________________________________________________________ **/
 
     private void setupLayout() {
-
-        setContentView(R.layout.sn_main_activity_layout);
-        ButterKnife.bind(this); // ButterKnife view injection initialization.
-
+        setupFragment(); // Sets up the fragment view for the activity.
         setUpToolbar(); // Sets up the toolbar for the activity.
     }
 
@@ -151,14 +154,11 @@ public class SNMainActivity extends AppCompatActivity  {
 
         Log.d(LOG_TAG, "changeFragment(): Fragment changed.");
 
-        // Removes the SSArtistsFragment from the stack.
         SNFragmentView.removeFragment(fragmentContainer, fragToRemove, false, weakRefActivity);
 
         // Adds the fragment to the primary fragment container.
         SNFragmentView.addFragment(frag, fragmentContainer, R.id.sn_fragment_container, fragToAdd, isAnimated, weakRefActivity);
 
-        // Sets the name of the action bar.
-        //SNActionBar.setupActionBar(fragToAdd, subtitle, this);
         currentFragment = fragToAdd; // Sets the current active fragment.
     }
 
@@ -166,6 +166,12 @@ public class SNMainActivity extends AppCompatActivity  {
     private void displayFragmentDialog(DialogFragment frag, String fragType) {
         FragmentManager fragMan = getSupportFragmentManager(); // Sets up the FragmentManager.
         frag.show(fragMan, fragType); // Displays the DialogFragment.
+    }
+
+    // setupFragment(): Initializes the fragment view for the layout.
+    private void setupFragment() {
+        Fragment fragment = new SNProfileFragment(); // Initializes the SNProfileFragment class.
+        SNFragmentView.addFragment(fragment, fragmentContainer, R.id.sn_fragment_container, "PROFILE", false, weakRefActivity);
     }
 
     /** TOOLBAR FUNCTIONALITY __________________________________________________________________ **/

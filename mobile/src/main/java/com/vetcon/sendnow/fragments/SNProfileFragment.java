@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.ui.toast.SNToast;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -62,12 +60,12 @@ public class SNProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Sets the view to the specified XML layout file.
-        View calculate_view = (ViewGroup) inflater.inflate(R.layout.sn_profile_fragment_layout, container, false);
-        ButterKnife.bind(this, calculate_view); // ButterKnife view injection initialization.
+        View profile_view = (ViewGroup) inflater.inflate(R.layout.sn_profile_fragment_layout, container, false);
+        ButterKnife.bind(this, profile_view); // ButterKnife view injection initialization.
 
         setUpLayout(); // Sets up the layout for the fragment.
 
-        return calculate_view;
+        return profile_view;
     }
 
     // onDestroyView(): This function runs when the screen is no longer visible and the view is
@@ -121,8 +119,5 @@ public class SNProfileFragment extends Fragment {
     }
 
     // setUpImages():
-    private void setUpImages() {
-
-
-    }
+    private void setUpImages() { }
 }

@@ -28,11 +28,11 @@
             android:id="@+id/sn_login_container">
 
             <ImageView
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+                android:layout_width="192dp"
+                android:layout_height="192dp"
                 android:id="@+id/sn_login_logo"
                 android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/sn_logo" />
 
             <EditText
                 android:id="@+id/sn_username_field"
