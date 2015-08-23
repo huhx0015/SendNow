@@ -7,7 +7,7 @@ public interface OnFragmentUpdateListener {
 
     // displayFragment(): Interface method which signals the parent activity to change the fragment
     // view.
-    void displayFragment(String fragType);
+    void displayFragment(String fragType, double value);
 
     // removeFragment(): Interface method which signals the parent activity to remove the fragment
     // view.

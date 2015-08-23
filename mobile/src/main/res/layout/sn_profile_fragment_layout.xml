@@ -50,7 +50,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="\@janedoe9000"
+                    android:text="Wife"
                     android:id="@+id/sn_profile_twitter_text"
                     android:typeface="sans"
                     android:textColor="@android:color/white" />

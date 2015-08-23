@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     android:id="@+id/sn_pay_fragment_layout">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/sn_blue_gradient">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="50dp">
+
+            <com.simplify.android.sdk.CardEditor
+            android:id="@+id/simplify_card"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:padding="25dp"
+            android:background="@drawable/sn_transparent_button"
+                android:orientation="vertical"
+                android:gravity="top|center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/sn_pay_send_value_text"
+                    android:text="$1000"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:typeface="sans"
+                    android:textSize="36sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="SEND"
+                    android:id="@+id/simplify_button"
+                    android:background="@drawable/sn_rounded_light_blue_button"
+                    android:gravity="center" />
+
+            </com.simplify.android.sdk.CardEditor>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 </FrameLayout>

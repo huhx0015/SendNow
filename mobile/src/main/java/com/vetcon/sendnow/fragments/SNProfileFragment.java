@@ -164,7 +164,7 @@ public class SNProfileFragment extends Fragment {
 
     // displayFragment(): Displays the specified fragment.
     private void displayFragment(String fragType) {
-        try { ((OnFragmentUpdateListener) currentActivity).displayFragment(fragType); }
+        try { ((OnFragmentUpdateListener) currentActivity).displayFragment(fragType, 0); }
         catch (ClassCastException cce) {} // Catch for class cast exception errors.
     }
 }

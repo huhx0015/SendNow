@@ -15,6 +15,7 @@ import com.parse.ParseCloud;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.PushService;
+import com.simplify.android.sdk.Simplify;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterCore;
@@ -64,6 +65,9 @@ public class MainApplicationStartup extends Application {
 
 		// TWITTER DIGITS INITIALIZATION:
 		setupDigits();
+
+		// SIMPLIFY INITALIZATION:
+		Simplify.init(getResources().getString(R.string.simplify_public_key));
 	}
 
 	public AuthCallback getAuthCallback(SNLoginActivity activity){

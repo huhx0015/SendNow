@@ -114,7 +114,8 @@ public class SNCalculateFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                displayFragment("PAY");
+                double calcValue = Double.parseDouble(valueText.getText().toString().substring(1));
+                displayFragment("PAY", calcValue);
             }
         });
 
@@ -243,8 +244,8 @@ public class SNCalculateFragment extends Fragment {
     /** INTERFACE METHODS ______________________________________________________________________ **/
 
     // displayFragment(): Displays the specified fragment.
-    private void displayFragment(String fragType) {
-        try { ((OnFragmentUpdateListener) currentActivity).displayFragment(fragType); }
+    private void displayFragment(String fragType, double value) {
+        try { ((OnFragmentUpdateListener) currentActivity).displayFragment(fragType, value); }
         catch (ClassCastException cce) {} // Catch for class cast exception errors.
     }
 }

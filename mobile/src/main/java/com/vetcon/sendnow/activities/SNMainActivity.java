@@ -3,9 +3,7 @@ package com.vetcon.sendnow.activities;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +13,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Toast;
-
 import com.parse.LogInCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
@@ -64,6 +60,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     // VIEW INJECTION VARIABLES
     @Bind(R.id.sn_fragment_container) FrameLayout fragmentContainer;
     @Bind(R.id.sn_action_button) FloatingActionButton actionButton;
+    @Bind(R.id.sn_drawer_background_image) ImageView drawerProfile;
     @Bind(R.id.sn_drawer_row_1) LinearLayout drawerHomeButton;
     @Bind(R.id.sn_drawer_row_2) LinearLayout drawerWalletButton;
     @Bind(R.id.sn_drawer_row_3) LinearLayout drawerDocumentsButton;
@@ -189,7 +186,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-                displayFragment("PROFILE");
+                displayFragment("PROFILE", 0);
             }
         });
 
@@ -279,12 +276,6 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
         currentFragment = fragToAdd; // Sets the current active fragment.
     }
 
-    // displayFragmentDialog(): Displays the DialogFragment view for the specified fragment.
-    private void displayFragmentDialog(DialogFragment frag, String fragType) {
-        FragmentManager fragMan = getSupportFragmentManager(); // Sets up the FragmentManager.
-        frag.show(fragMan, fragType); // Displays the DialogFragment.
-    }
-
     // setupFragment(): Initializes the fragment view for the layout.
     private void setupFragment() {
 
@@ -349,7 +340,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     /** INTERFACE METHODS ______________________________________________________________________ **/
 
     @Override
-    public void displayFragment(String fragType) {
+    public void displayFragment(String fragType, double value) {
 
         // SNMapsFragment:
         if (fragType.equals("MAPS")) {
@@ -377,7 +368,8 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
         // SNPayFragment:
         else if (fragType.equals("PAY")) {
-            Fragment fragment = new SNPayFragment();
+            SNPayFragment fragment = new SNPayFragment();
+            fragment.initializeFragment(value);
             changeFragment(fragment, fragType, true);
             SNToolbar.updateToolbar(sn_main_toolbar, "Payment");
             actionButton.setVisibility(View.INVISIBLE); // Hides the floating action button.
