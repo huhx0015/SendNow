@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-
 import com.simplify.android.sdk.Simplify;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.data.SNTwitterUserModel;
@@ -29,7 +28,6 @@ import com.vetcon.sendnow.interfaces.OnFragmentUpdateListener;
 import com.vetcon.sendnow.ui.fragments.SNFragmentView;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
 import java.lang.ref.WeakReference;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -144,9 +142,9 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     @Override
     public void onBackPressed() {
 
-        // SNMapFragment: If current fragment view is SNMapsFragment, the focus is returned to the
-        // SNProfileFragment.
-        if (currentFragment.equals("MAPS")) {
+        // If current fragment view is a fragment other than SNProfileFragment, the focus is
+        // returned to the SNProfileFragment.
+        if ( !(currentFragment.equals("PROFILE")) ) {
             removeFragment();
         }
 
@@ -256,7 +254,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     public void displayFragment(String fragType) {
 
         // SNMapsFragment:
-        if (fragType.equals("MAP")) {
+        if (fragType.equals("MAPS")) {
             Fragment fragment = new SNMapFragment(); // Initializes the SNMapFragment class.
             changeFragment(fragment, fragType, "PROFILE", null, true);
         }

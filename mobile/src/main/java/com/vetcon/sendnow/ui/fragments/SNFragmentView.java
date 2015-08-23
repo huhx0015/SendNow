@@ -93,44 +93,14 @@ public class SNFragmentView {
 
         int animationResource; // References the animation XML resource file.
 
-        // Sets the animation XML resource file, based on the fragment type.
-        if (fragType.equals("WALLET")) {
-
-            // FRAGMENT APPEARANCE ANIMATION:
-            if (isAppearing) {
-                animationResource = R.anim.slide_down; // Sets the animation XML resource file.
-            }
-
-            // FRAGMENT REMOVAL ANIMATION:
-            else {
-                animationResource = R.anim.slide_up; // Sets the animation XML resource file.
-            }
+        // FRAGMENT APPEARANCE ANIMATION:
+        if (isAppearing) {
+            animationResource = R.anim.slide_down; // Sets the animation XML resource file.
         }
 
-        else if (fragType.equals("PLACES")) {
-
-            // FRAGMENT APPEARANCE ANIMATION:
-            if (isAppearing) {
-                animationResource = R.anim.slide_right; // Sets the animation XML resource file.
-            }
-
-            // FRAGMENT REMOVAL ANIMATION:
-            else {
-                animationResource = R.anim.slide_left; // Sets the animation XML resource file.
-            }
-        }
-
+        // FRAGMENT REMOVAL ANIMATION:
         else {
-
-            // FRAGMENT APPEARANCE ANIMATION:
-            if (isAppearing) {
-                animationResource = R.anim.slide_up; // Sets the animation XML resource file.
-            }
-
-            // FRAGMENT REMOVAL ANIMATION:
-            else {
-                animationResource = R.anim.slide_down; // Sets the animation XML resource file.
-            }
+            animationResource = R.anim.slide_up; // Sets the animation XML resource file.
         }
 
         // Loads the animation from the XML animation resource file.
