@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sn_voice_activity_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/sn_blue_gradient">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/sn_toolbar_drop_shadow"
+        android:id="@+id/sn_voice_container_drop_shadow" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sn_voice_alert_image"
+        android:src="@drawable/sn_logo"
+        android:padding="25dp"
+        android:layout_gravity="center" />
+
+</FrameLayout>
