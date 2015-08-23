@@ -187,7 +187,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-
+                displayFragment("PROFILE");
             }
         });
 
@@ -196,7 +196,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-
+                //displayFragment("WALLET");
             }
         });
 
@@ -205,7 +205,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-
+                //displayFragment("DOCUMENTS");
             }
         });
 
@@ -214,7 +214,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-
+                //displayFragment("FILES");
             }
         });
 
@@ -223,7 +223,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-
+                //displayFragment("SEARCH");
             }
         });
 
@@ -232,7 +232,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-
+                //displayFragment("NOTIFICATIONS");
             }
         });
 
@@ -241,7 +241,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-
+                //displayFragment("PENDING");
             }
         });
 
@@ -250,7 +250,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
             @Override
             public void onClick(View view) {
-
+                //displayFragment("ACCOUNT");
             }
         });
 
@@ -272,7 +272,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
         Log.d(LOG_TAG, "changeFragment(): Fragment changed.");
 
-        SNFragmentView.removeFragment(fragmentContainer, fragToRemove, false, weakRefActivity);
+        //SNFragmentView.removeFragment(fragmentContainer, fragToRemove, false, weakRefActivity);
 
         // Adds the fragment to the primary fragment container.
         SNFragmentView.addFragment(frag, fragmentContainer, R.id.sn_fragment_container, fragToAdd, isAnimated, weakRefActivity);
@@ -365,9 +365,15 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
         }
 
         else if (fragType.equals("DOCUMENTS")) {
-            Fragment fragment = new InboxFragment(); // Initializes the SNCalculateFragment class.
+            Fragment fragment = new InboxFragment();
             changeFragment(fragment, fragType, "PROFILE", null, true);
         }
+
+        else {
+            Fragment fragment = new SNProfileFragment();
+            changeFragment(fragment, fragType, currentFragment, null, true);
+        }
+
         // TODO: Add more functionality here later.
     }
 
