@@ -34,10 +34,10 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.simplify.android.sdk.Simplify;
-import com.vetcon.sendnow.FileHelper;
-import com.vetcon.sendnow.InboxFragment;
-import com.vetcon.sendnow.ParseConstants;
-import com.vetcon.sendnow.QustomDialogBuilder;
+import com.vetcon.sendnow.data.FileHelper;
+import com.vetcon.sendnow.fragments.SNDocumentFragment;
+import com.vetcon.sendnow.data.ParseConstants;
+import com.vetcon.sendnow.ui.dialog.QustomDialogBuilder;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.data.SNTwitterUserModel;
 import com.vetcon.sendnow.fragments.SNCalculateFragment;
@@ -389,8 +389,8 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
 
         // InboxFragment:
         else if (fragType.equals("DOCUMENTS")) {
-            mInboxFragment = new InboxFragment();
-            changeFragment(mInboxFragment, fragType, true);
+            mSNDocumentFragment = new SNDocumentFragment();
+            changeFragment(mSNDocumentFragment, fragType, true);
             SNToolbar.updateToolbar(sn_main_toolbar, "Documents");
             actionButton.setVisibility(View.VISIBLE); // Displays the floating action button.
         }
@@ -474,7 +474,7 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
     private static final int PICK_PHOTO_REQUEST = 2;
     private static final int MEDIA_TYPE_IMAGE = 5;
     protected Uri mMediaUri;
-    private InboxFragment mInboxFragment;
+    private SNDocumentFragment mSNDocumentFragment;
 
     private boolean handleOnActivityResultCamera(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
@@ -653,8 +653,8 @@ public class SNMainActivity extends AppCompatActivity implements OnFragmentUpdat
                     // success!
                     Toast.makeText(SNMainActivity.this, R.string.success_message, Toast.LENGTH_LONG).show();
 
-                    if (mInboxFragment != null) {
-                        mInboxFragment.updateMessagesList();
+                    if (mSNDocumentFragment != null) {
+                        mSNDocumentFragment.updateMessagesList();
                     }
                 } else {
                     Toast.makeText(SNMainActivity.this, R.string.error_sending_message, Toast.LENGTH_LONG).show();

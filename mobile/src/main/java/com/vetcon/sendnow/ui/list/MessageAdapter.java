@@ -1,4 +1,4 @@
-package com.vetcon.sendnow;
+package com.vetcon.sendnow.ui.list;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,8 +18,9 @@ import android.widget.TextView;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseObject;
-import com.parse.ParseUser;
 import com.squareup.picasso.Picasso;
+import com.vetcon.sendnow.data.ParseConstants;
+import com.vetcon.sendnow.R;
 
 public class MessageAdapter extends ArrayAdapter<ParseObject> {
 	

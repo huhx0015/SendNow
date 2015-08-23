@@ -1,4 +1,4 @@
-package com.vetcon.sendnow;
+package com.vetcon.sendnow.application;
 
 import android.app.Application;
 import android.content.SharedPreferences;
@@ -19,6 +19,7 @@ import com.simplify.android.sdk.Simplify;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterCore;
+import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.activities.SNLoginActivity;
 import com.vetcon.sendnow.activities.SNMainActivity;
 import com.vetcon.sendnow.interfaces.OnTwitterDigitListener;
@@ -28,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import io.fabric.sdk.android.Fabric;
 
-public class MainApplicationStartup extends Application {
+public class SNApplication extends Application {
 
 	/** CLASS VARIABLES ________________________________________________________________________ **/
 
@@ -36,7 +37,7 @@ public class MainApplicationStartup extends Application {
 	private SNLoginActivity loginActivity; // Referernces the login activity.
 
 	// LOGGING VARIABLES
-	private static final String LOG_TAG = MainApplicationStartup.class.getSimpleName();
+	private static final String LOG_TAG = SNApplication.class.getSimpleName();
 
 	// PREFERENCE VARIABLES
 	private Boolean isDigitRegistered = false; // Used to determine if the user has been registered via Twitter Digits.

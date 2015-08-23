@@ -1,6 +1,7 @@
-package com.vetcon.sendnow;
+package com.vetcon.sendnow.data;
 
 public final class ParseConstants {
+
 	// Class name
 	public static final String CLASS_MESSAGES = "Messages";
 	public static final String CLASS_REQUESTS = "Requests";
@@ -20,7 +21,6 @@ public final class ParseConstants {
 	public static final String KEY_FILE_TIME = "fileTime";
 	public static final String KEY_CREATED_AT = "createdAt";
 	public static final String KEY_UPDATED_AT = "updatedAt";
-	
 	public static final String TYPE_IMAGE = "image";
 	public static final String TYPE_VIDEO = "video";
 }

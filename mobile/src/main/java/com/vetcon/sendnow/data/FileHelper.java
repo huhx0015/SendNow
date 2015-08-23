@@ -1,4 +1,4 @@
-package com.vetcon.sendnow;
+package com.vetcon.sendnow.data;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -12,6 +12,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
+
+import com.vetcon.sendnow.images.ImageResizer;
 
 public class FileHelper {
 	

@@ -1,10 +1,9 @@
-package com.vetcon.sendnow;
+package com.vetcon.sendnow.activities;
 
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,7 +13,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import com.vetcon.sendnow.ui.actionbar.SNToolbar;
+import com.vetcon.sendnow.R;
 
 public class ViewImageActivity extends Activity {
 

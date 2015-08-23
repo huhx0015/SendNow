@@ -1,4 +1,4 @@
-package com.vetcon.sendnow;
+package com.vetcon.sendnow.images;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;

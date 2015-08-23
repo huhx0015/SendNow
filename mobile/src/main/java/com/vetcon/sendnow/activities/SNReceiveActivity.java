@@ -1,22 +1,12 @@
 package com.vetcon.sendnow.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
 
-/**
- * Created by Michael Yoon Huh on 8/2/2015.
- */
-public class SNVoiceActivity extends Activity {
-
-    /** CLASS VARIABLES ________________________________________________________________________ **/
-
-    // SPEECH VARIABLES
-    private TextToSpeech speechInstance; // Used to reference the TTS instance for the class.
+public class SNReceiveActivity extends Activity {
 
     /** LIFECYCLE METHODS ______________________________________________________________________ **/
 
@@ -28,14 +18,12 @@ public class SNVoiceActivity extends Activity {
 
         setUpLayout(); // Sets up the layout for the activity.
 
-        startSpeech("Someone needs your help!", this); // Starts the TTS speech alert.
-
         // Creates a new timer thread for temporarily pausing the app for the TTS speech
         // to process.
         Thread timer = new Thread() {
 
             public void run() {
-                try { sleep(10000); } // Time to sleep in milliseconds.
+                try { sleep(5000); } // Time to sleep in milliseconds.
                 catch (InterruptedException e) { e.printStackTrace(); } // Prints error code.
                 finally { launchMainIntent();  } // Launches the next activity.
             }
@@ -68,21 +56,6 @@ public class SNVoiceActivity extends Activity {
     // setUpLayout(): Sets up the layout for the activity.
     private void setUpLayout() {
         setContentView(R.layout.sn_voice_activity_layout);
-    }
-
-    /** NARRATION METHODS ______________________________________________________________________ **/
-
-    // startSpeech(): Activates voice functionality to say something.
-    private void startSpeech(final String script, Context context) {
-
-        // Creates a new instance to begin TextToSpeech functionality.
-        speechInstance = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
-
-            @Override
-            public void onInit(int status) {
-                speechInstance.speak(script, TextToSpeech.QUEUE_FLUSH, null); // The script is spoken by the TTS system.
-            }
-        });
     }
 
     /** INTENT METHODS _________________________________________________________________________ **/

@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.vetcon.sendnow.locationapi.maps.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -45,7 +44,7 @@
         android:largeHeap="true"
         android:launchMode="singleTop"
         android:alwaysRetainTaskState="true"
-        android:name="com.vetcon.sendnow.MainApplicationStartup">
+        android:name=".application.SNApplication">
 
         <activity
             android:name=".activities.SNMainActivity"
@@ -74,17 +73,25 @@
 
         </activity>
 
+        <activity
+            android:name=".activities.SNReceiveActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateHidden">
+
+            <intent-filter>
+                <action android:name="com.vetcon.sendnow.RECEIVEACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
 		<!-- Image upload -->
         <activity
-            android:name="com.vetcon.sendnow.MainActivity"
-            android:label="@string/app_name"
-            android:logo="@drawable/ic_action"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.vetcon.sendnow.ViewImageActivity"
-            android:parentActivityName="com.vetcon.sendnow.MainActivity"
-            android:screenOrientation="portrait" >
+            android:name=".activities.ViewImageActivity"
+            android:parentActivityName="com.vetcon.sendnow.activities.SNMainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
 
         <service android:name="com.parse.PushService" />
@@ -119,24 +126,6 @@
             <intent-filter>
                 <action android:name="com.vetcon.sendnow.UPDATE_MESSAGES" />
                 <action android:name="com.vetcon.sendnow.UPDATE_REQUESTS" />
-            </intent-filter>
-        </receiver>
-
-
-
-        <receiver android:name="com.vetcon.sendnow.MyCustomReceiver" android:exported="false">
-            <intent-filter>
-                <action android:name="com.vetcon.sendnow.UPDATE_MESSAGES" />
-                <action android:name="com.vetcon.sendnow.UPDATE_REQUESTS" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.parse.GcmBroadcastReceiver"
-            android:permission="com.vetcon.sendnow.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-
-                <category android:name="com.vetcon.sendnow" />
             </intent-filter>
         </receiver>
 

@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.digits.sdk.android.DigitsAuthButton;
-import com.vetcon.sendnow.MainApplicationStartup;
+import com.vetcon.sendnow.application.SNApplication;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.interfaces.OnTwitterDigitListener;
 import com.vetcon.sendnow.preferences.SNPreferences;
@@ -82,7 +82,7 @@ public class SNLoginActivity extends AppCompatActivity implements OnTwitterDigit
 
         // TWITTER DIGITS AUTH BUTTON:
         DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.sn_digits_button);
-        digitsButton.setCallback(((MainApplicationStartup) getApplication()).getAuthCallback(this));
+        digitsButton.setCallback(((SNApplication) getApplication()).getAuthCallback(this));
         digitsButton.setAuthTheme(android.R.style.Theme_Material);
 
         // LOGIN BUTTON: Handles the display of the login field container.

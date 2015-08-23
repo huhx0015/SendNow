@@ -1,4 +1,4 @@
-package com.vetcon.sendnow;
+package com.vetcon.sendnow.fragments;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +24,17 @@ import com.parse.ParseObject;
 import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.vetcon.sendnow.ui.list.MessageAdapter;
+import com.vetcon.sendnow.data.ParseConstants;
+import com.vetcon.sendnow.R;
+import com.vetcon.sendnow.activities.ViewImageActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class InboxFragment extends ListFragment {
+public class SNDocumentFragment extends ListFragment {
 
-	public static final String TAG = InboxFragment.class.getSimpleName();
+	public static final String TAG = SNDocumentFragment.class.getSimpleName();
 	
 	protected List<ParseObject> mMessages;
 	

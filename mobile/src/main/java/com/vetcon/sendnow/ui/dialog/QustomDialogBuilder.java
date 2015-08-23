@@ -1,4 +1,4 @@
-package com.vetcon.sendnow;
+package com.vetcon.sendnow.ui.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.vetcon.sendnow.R;
 
 public class QustomDialogBuilder extends AlertDialog.Builder {
 
