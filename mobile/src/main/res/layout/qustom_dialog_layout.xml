@@ -76,7 +76,6 @@
         android:orientation="vertical">
 
             <TextView android:id="@+id/message"
-                style="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="10dip"
@@ -84,7 +83,8 @@
                 android:paddingTop="8dip"
                 android:paddingBottom="8dip"
                 android:layout_marginLeft="8dip"
-                android:textIsSelectable="false"/>
+                android:textIsSelectable="false"
+                android:textColor="@android:color/black" />
     </LinearLayout>
 
     <FrameLayout android:id="@+id/customPanel"

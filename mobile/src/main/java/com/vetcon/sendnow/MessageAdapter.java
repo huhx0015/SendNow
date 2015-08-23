@@ -84,28 +84,10 @@ public class MessageAdapter extends ArrayAdapter<ParseObject> {
 		holder.nameLabel.setText(description);
 
 		holder.nameLabel2.setText(timestamp);
-
-
-        List<String> readStatus = message.getList(ParseConstants.KEY_RECIPIENT_READ_IDS);
-
 		holder.nameLabel.setTextColor(Color.WHITE);
 		holder.nameLabel2.setTextColor(Color.WHITE);
 		holder.nameLabel.setBackgroundColor(Color.TRANSPARENT);
 		holder.nameLabel2.setBackgroundColor(Color.TRANSPARENT);
-
-        if (readStatus != null) {
-
-            if (readStatus.contains(ParseUser.getCurrentUser().getObjectId()))
-            {
-//                holder.nameLabel.setTextColor(Color.GRAY);
-//                holder.nameLabel2.setTextColor(Color.GRAY);
-            }
-        }
-        else
-        {
-            holder.nameLabel.setTextColor(Color.BLACK);
-            holder.nameLabel2.setTextColor(Color.BLACK);
-        }
 		
 		return convertView;
 	}
