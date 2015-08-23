@@ -92,8 +92,8 @@ public class MainApplicationStartup extends Application {
 				currentSession = session;
 
 				// TWITTER DIGITS ASYNCTASK INITIALIZATION:
-				SNDigitsConnectionTask task = new SNDigitsConnectionTask();
-				task.execute(""); // Executes the AsyncTask.
+				//SNDigitsConnectionTask task = new SNDigitsConnectionTask();
+				//task.execute(""); // Executes the AsyncTask.
 			}
 
 			@Override
