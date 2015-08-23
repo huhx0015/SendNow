@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip">
+ 
+        <com.parse.ParseImageView
+            android:id="@+id/profileImage"
+            android:layout_width="0dip"
+            android:layout_height="45dip"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="3dp"
+            android:src="@null" />
+ 
+    </LinearLayout>
+ 
+ 	<ImageView
+ 	    android:id="@+id/messageIcon"
+ 	    android:layout_width="wrap_content"
+ 	    android:layout_height="wrap_content"
+ 	    android:layout_alignParentRight="true"
+ 	    android:layout_alignParentTop="true"
+ 	    android:paddingBottom="@dimen/message_list_item_vertical_margin"
+ 	    android:paddingRight="@dimen/activity_horizontal_margin"
+ 	    android:paddingTop="13dp" />
+    
+	<TextView
+	    android:id="@+id/senderLabel"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+        android:background="@drawable/list_item_selector"
+	    android:layout_alignParentTop="true"
+	    android:layout_centerVertical="true"
+	    android:layout_marginTop="4dp"
+	    android:layout_toRightOf="@+id/thumbnail"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/messageTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/senderLabel"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="13sp"
+        android:visibility="gone"/>
+
+</RelativeLayout>

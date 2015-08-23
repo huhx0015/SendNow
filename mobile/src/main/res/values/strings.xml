@@ -9,4 +9,66 @@
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
 
+
+	<!-- image upload -->
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Identification Documents</string>
+    <string name="title_section2">Requests</string>
+    <string name="title_section3">Friends</string>
+    <string name="title_section4">News</string>
+    <string name="title_activity_login">Login</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="email_password_hint">Email Address</string>
+    <string name="login_text">Login</string>
+    <string name="reset_text">Forgot your password?</string>
+    <string name="create_account_text">Sign Up</string>
+    <string name="submit_text">Submit</string>
+    <string name="password_reset_error_message">Make sure you enter a valid email address!</string>
+    <string name="edit_email_error_message">Make sure you enter a valid email address!</string>
+    <string name="edit_username_error_message">Make sure you enter a username!</string>
+    <string name="title_activity_sign_up">Create Account</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_edit_username">Edit Username</string>
+    <string name="title_activity_edit_email">Edit Email Address</string>
+    <string name="signup_error_message">Please make sure you enter a username, password and email address!</string>
+    <string name="signup_error_title">Oops!</string>
+    <string name="login_error_message">Please make sure you enter a username and password!</string>
+    <string name="login_error_title">Oops!</string>
+    <string name="menu_logout_label">Logout</string>
+    <string name="menu_remove_label">Remove</string>
+    <string name="menu_add_label">Add</string>
+    <string name="menu_settings_label">Settings</string>
+    <string name="empty_inbox_label">No document!</string>
+    <string name="empty_friends_label">Tap above to add some friends.</string>
+    <string name="empty_requests_label">No new requests!</string>
+    <string name="menu_edit_friends_label">Search</string>
+    <string name="title_activity_edit_friends">Add or Remove</string>
+    <string name="title_activity_password_reset">Password Reset</string>
+    <string name="menu_camera_label">Camera</string>
+    <string name="error_external_storage">There was a problem accessing your device\'s external storage.</string>
+    <string name="general_error">Sorry, there was an error!</string>
+    <string name="error_selecting_file">There was an error with the file selected. Please select a different file.</string>
+    <string name="terms_privacy">By creating an account, you agree to the &lt;a href="http://yourserver.com/snapsecret/termsofuse.html">Terms of Use&lt;/a> and your are acknowledging that you have read the &lt;a href="http://yourserver.com/snapsecret/privacypolicy.html">Privacy Policy&lt;/a>.</string>
+
+    <string-array name="camera_choices">
+        <item>Take Picture</item>
+        <item>Choose Picture</item>
+    </string-array>
+
+    <string name="error_opening_file">There was a problem with the selected file.</string>
+    <string name="error_file_size_too_large">The selected file is too large! Select a new file.</string>
+    <string name="title_activity_recipients">Recipients</string>
+    <string name="empty_recipients_list_message">Try adding some friends first!</string>
+    <string name="menu_send_label">Send</string>
+    <string name="menu_share_label">Share</string>
+    <string name="menu_refresh_label">Load more</string>
+    <string name="menu_search_label">Username</string>
+    <string name="error_selecting_file_title">We\'re sorry!</string>
+    <string name="success_message">Document uploaded!</string>
+    <string name="already_requested">Oops! Looks like there is already a friend request pending or your already friends.</string>
+    <string name="error_sending_message">There was an error sending your message. Please try again.</string>
+    <string name="title_activity_view_image">My Identification Documents</string>
+
 </resources>

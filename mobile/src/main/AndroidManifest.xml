@@ -11,6 +11,18 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.vetcon.sendnow.locationapi.maps.permission.MAPS_RECEIVE" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission android:protectionLevel="signature"
+        android:name="com.vetcon.sendnow.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.vetcon.sendnow.permission.C2D_MESSAGE" />
+
     <permission
         android:name="com.vetcon.sendnow.locationapi.maps.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
@@ -58,6 +70,46 @@
             </intent-filter>
 
         </activity>
+
+		<!-- Image upload -->
+        <activity
+            android:name="com.vetcon.sendnow.MainActivity"
+            android:label="@string/app_name"
+            android:logo="@drawable/ic_action"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.vetcon.sendnow.ViewImageActivity"
+            android:parentActivityName="com.vetcon.sendnow.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service android:name="com.parse.PushService" />
+        <receiver android:name="com.parse.ParseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.vetcon.sendnow.MyCustomReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="com.developer.android.UPDATE_MESSAGES" />
+                <action android:name="com.developer.android.UPDATE_REQUESTS" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.developer.android" />
+            </intent-filter>
+        </receiver>
 
         <!-- Enables the Android Pay API -->
         <meta-data

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".MainActivity$DummySectionFragment" >
+
+	<ListView
+	    android:id="@android:id/list"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:background="#ffffff"
+        android:listSelector="@drawable/list_item_selector"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true" >
+    </ListView>
+
+    <LinearLayout android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip">
+
+        <ImageView
+            android:id="@+id/emptyImage"
+            android:layout_width="45dip"
+            android:layout_height="45dip"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/ic_sad_face" />
+
+        <TextView
+            android:id="@+id/emptyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@android:id/empty"
+            android:text="@string/empty_inbox_label"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+</RelativeLayout>
