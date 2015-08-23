@@ -109,7 +109,7 @@
                 <FrameLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="108dp"
+                    android:layout_height="96dp"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:id="@+id/sn_drawer_name_container">
