@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SNLoginActivity"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/sn_login_activity_layout"
+    android:background="#e0f2f1">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/sn_toolbar_drop_shadow"
+        android:id="@+id/sn_login_container_drop_shadow" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:id="@+id/sn_login_scrollview_container">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="25dp"
+            android:id="@+id/sn_login_container">
+
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:id="@+id/sn_login_logo"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher" />
+
+            <EditText
+                android:id="@+id/sn_username_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:lines="1"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:ems="10"
+                android:hint="@string/username_hint"
+                android:inputType="textVisiblePassword"
+                android:background="@drawable/sn_edit_text_background"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <EditText
+                android:id="@+id/sn_password_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:lines="1"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/sj_username_field"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:ems="10"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword"
+                android:background="@drawable/sn_edit_text_background"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/sn_login_button"
+                android:layout_width="256dp"
+                android:layout_height="54dp"
+                android:layout_below="@+id/sj_password_field"
+                android:gravity="center"
+                android:text="Log In"
+                android:textColor="@android:color/white"
+                android:textSize="21sp"
+                android:background="@drawable/sn_rounded_light_green_button"
+                android:layout_gravity="center"
+                android:typeface="sans"
+                android:layout_marginTop="54dp"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/sn_signup_btn"
+                android:layout_width="256dp"
+                android:layout_height="54dp"
+                android:layout_below="@+id/sj_login_button"
+                android:gravity="center"
+                android:text="Sign Up"
+                android:textColor="@android:color/white"
+                android:textSize="21sp"
+                android:background="@drawable/sn_rounded_dark_green_button"
+                android:layout_gravity="center"
+                android:typeface="sans"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/sj_reset_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sj_signup_btn"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
