@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="sn_toolbar_dark_color">#00bfa5</color>
-    <color name="sn_toolbar_light_color">#1de9b6</color>
-    <color name="sn_toolbar_accent_color">#64ffda</color>
+    <color name="sn_toolbar_dark_color">#4fc3f7</color>
+    <color name="sn_toolbar_light_color">#81d4fa</color>
+    <color name="sn_toolbar_accent_color">#4fc3f7</color>
 </resources>

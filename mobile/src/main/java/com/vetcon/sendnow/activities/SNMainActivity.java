@@ -1,10 +1,16 @@
 package com.vetcon.sendnow.activities;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+
 import com.simplify.android.sdk.Simplify;
 import com.vetcon.sendnow.R;
 import com.vetcon.sendnow.ui.layout.SNUnbind;
@@ -85,6 +91,9 @@ public class SNMainActivity extends AppCompatActivity  {
         ButterKnife.bind(this); // ButterKnife view injection initialization.
 
     }
+
+    /** FRAGMENT FUNCTIONALITY _________________________________________________________________ **/
+
 
     /** RECYCLE METHODS ________________________________________________________________________ **/
 
