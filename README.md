@@ -5,7 +5,7 @@ Team: Catharine Rhee, Michael Huh, Farn-Yu Khong, Ssurey Moon, Erik Medina
 
 Platform: Android, Web
 
-![send_now_preview](https://cloud.githubusercontent.com/assets/1645482/12570544/4f79ae64-c38d-11e5-9f3d-9dede3e2cef7.gif)
+![send_now_preview](https://cloud.githubusercontent.com/assets/1645482/12570662/9a4e874c-c38e-11e5-95ff-948b3712f585.gif)
 
 Event: MasterCard Masters of Code Hackathon: San Francisco
 
