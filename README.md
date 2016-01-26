@@ -5,6 +5,12 @@ Team: Catharine Rhee, Michael Huh, Farn-Yu Khong, Ssurey Moon, Erik Medina
 
 Platform: Android, Web
 
+![send_now_preview](https://cloud.githubusercontent.com/assets/1645482/12570544/4f79ae64-c38d-11e5-9f3d-9dede3e2cef7.gif)
+
+Event: MasterCard Masters of Code Hackathon: San Francisco
+
+Hackathon.io: http://www.hackathon.io/50242
+
 Send Now is an Android application that provides a service for providing emergency funds sent directly from friends, family & NGOs. Built for the MasterCard Masters of Code Hackathon in San Francisco, Send Now utilizes MasterCard's MoneySend and Simplify Commerce APIs for business transactions, Twitter Digits for simplified sign-in, and Parse for our backend services.
 
 1 out of every 4 tourists will be pickpocketed 33% of all travel insurance claims are for lost or stolen possessions. Each day it is estimated that more than 400,000 pick pocket incidents occur around the world that are reported. There are other emergencies such as natural disasters, civil unrest, war, accidents, crimes, medical emergencies, etc. that happen that can leave you stranded, endangered and far from home and safety. SendNow streamlines the process of receiving emergency funds from friends, family and NGOs by using MasterCard's MoneySend and Simplify Commerce APIs to facilitate money movement to those in need. 
