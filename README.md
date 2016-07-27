@@ -1,5 +1,5 @@
 Send Now | MasterCard Masters of Code Hackathon: San Francisco
-============
+==============================================================
 
 Team: Catharine Rhee, Michael Huh, Farn-Yu Khong, Ssurey Moon, Erik Medina
 
